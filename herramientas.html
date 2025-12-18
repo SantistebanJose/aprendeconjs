@@ -1,0 +1,930 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content="Descarga gratis el emulador de calculadora Casio fx-ES PLUS. Realiza cálculos avanzados como en una calculadora real. ¡Fácil instalación!">
+<meta name="keywords" content="Emulador Casio fx-ES PLUS, Calculadora científica, Descargar software Casio, Matemáticas, Ingeniería">
+<meta name="robots" content="index, follow">
+        <title>Herramientas</title>
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="icon" href="img/logopg.png" type="image/x-icon">
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1261028803938105"
+		crossorigin="anonymous"></script>
+		
+	</head>
+	<body>
+		<!-- Banner de Consentimiento de Cookies -->
+<div id="cookie-consent-banner">
+    <p>Utilizamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra <a href="terminos.html#top-cookies">política de cookies</a>.</p>
+    <button id="accept-cookies">Aceptar</button>
+</div>
+		<header>
+			<div class="container-hero">
+				<div class="container hero">
+					<div class="customer-support">
+                        <i class="fa-solid fa-headset"></i>
+						<div class="content-customer-support">
+							<span class="text">Soporte al cliente</span>
+							<span class="number">+51 916-529-268</span>
+						</div>
+					</div>
+
+					<div class="container-logo">
+						<!-- <i class="fa-solid fa-mug-hot"></i> -->
+						<h1 class="logo"><a href="/">JS</a></h1>
+					</div>
+
+					<div class="container-user">
+						<a href="clase.html" class="classes-link">
+							<i class="fa-solid fa-chalkboard-teacher"></i> <!-- Cambia el ícono según sea necesario -->
+							CLASES VIRTUALES
+						</a>
+						<img src="img/logopg.png" alt="Mi Logo" class="logo-icon"> <!-- Asegúrate de que la ruta sea correcta -->
+						<span class="text"></span>
+							<span class="number"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="container-navbar">
+				<nav class="navbar container">
+					<i class="fa-solid fa-bars"></i>
+					<ul class="menu">
+						<li><a href="index.html">INICIO</a></li>
+						<li><a href="sobremi.html#sobre-mi">SOBRE MI</a></li>
+						<li><a href="codigos.html#proyectos">CÓDIGOS HTML</a></li>
+						<li><a href="proyectos.html#top-products">PROYECTOS</a></li>
+            <li><a href="recursos.html#herramientas" class="active">RECURSOS</a></li>						
+            <li><a href="terminos.html#top-termins">TÉRMINOS Y CONDICIONES</a></li>
+						<li><a href="contacto.html#contacto">CONTÁCTO</a></li>
+					</ul>
+					<div class="navbar-title">
+						<h1>Aprende Con JS</h1>
+					</div>
+
+				 <!--	<form class="search-form">
+						<input type="search" placeholder="Buscar..." />
+						<button class="btn-search">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</button>
+					</form> -->
+				</nav>
+			</div>
+		</header>
+
+		<section class="banner">
+			<div class="content-banner">
+				<br>
+				<br>
+				<br>
+				<p>Aprende sobre Tecnología!</p>
+				<h2>100% Entretenido <br /></h2>
+				<a href="https://www.youtube.com/@AprendeConJS" target="_blank" rel="noopener noreferrer">Inmersos en el mundo del conocimiento.</a>
+			</div>
+		</section>
+		
+        <!-- anuncio in-article -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1261028803938105"
+            crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+            style="display:block; text-align:center;"
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-1261028803938105"
+            data-ad-slot="5614631246"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+		<main class="main-content">
+			<br>
+            <style>
+                .converter-container {
+                  max-width: 800px;
+                  margin: 40px auto;
+                  padding: 30px;
+                  background: linear-gradient(145deg, #ffffff, #f5f7fa);
+                  border-radius: 20px;
+                  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                }
+              
+                .converter-header {
+                  text-align: center;
+                  margin-bottom: 30px;
+                }
+              
+                .converter-header h1 {
+                  color: #2d3748;
+                  font-size: 2.5em;
+                  margin-bottom: 15px;
+                }
+              
+                .converter-header p {
+                  color: #718096;
+                  font-size: 1.1em;
+                }
+              
+                .converter-box {
+                  background: #ffffff;
+                  padding: 40px;
+                  border-radius: 15px;
+                  border: 2px dashed #cbd5e0;
+                  text-align: center;
+                  transition: all 0.3s ease;
+                }
+              
+                .converter-box:hover {
+                  border-color: #4299e1;
+                }
+              
+                .file-input-wrapper {
+                  margin: 20px 0;
+                }
+              
+                .file-input {
+                  display: none;
+                }
+              
+                .file-label {
+                  background: #4299e1;
+                  color: white;
+                  padding: 12px 30px;
+                  border-radius: 8px;
+                  cursor: pointer;
+                  font-weight: 600;
+                  display: inline-block;
+                  transition: all 0.3s ease;
+                }
+              
+                .file-label:hover {
+                  background: #3182ce;
+                  transform: translateY(-2px);
+                }
+              
+                .conversion-type {
+                  margin: 20px 0;
+                  padding: 12px;
+                  width: 200px;
+                  border-radius: 8px;
+                  border: 1px solid #e2e8f0;
+                  font-size: 1em;
+                  outline: none;
+                }
+              
+                .convert-button {
+                  background: #48bb78;
+                  color: white;
+                  border: none;
+                  padding: 12px 40px;
+                  border-radius: 8px;
+                  font-size: 1.1em;
+                  font-weight: 600;
+                  cursor: pointer;
+                  transition: all 0.3s ease;
+                }
+              
+                .convert-button:disabled {
+                  background: #a0aec0;
+                  cursor: not-allowed;
+                  transform: none;
+                }
+              
+                .convert-button:not(:disabled):hover {
+                  background: #38a169;
+                  transform: translateY(-2px);
+                }
+              
+                .file-info {
+                  margin: 20px 0;
+                  color: #718096;
+                }
+              
+                .status-message {
+                  margin-top: 20px;
+                  padding: 15px;
+                  border-radius: 8px;
+                  background: #ebf8ff;
+                  color: #2b6cb0;
+                  display: none;
+                }
+              
+                .status-message.error {
+                  background: #fff5f5;
+                  color: #c53030;
+                }
+              
+                .status-message.success {
+                  background: #f0fff4;
+                  color: #2f855a;
+                }
+              
+                .download-section {
+                  margin-top: 30px;
+                  padding: 20px;
+                  border-radius: 8px;
+                  background: #f7fafc;
+                  text-align: center;
+                  display: none;
+                }
+              
+                .download-button {
+                  background: #667eea;
+                  color: white;
+                  padding: 12px 30px;
+                  border-radius: 8px;
+                  text-decoration: none;
+                  display: inline-block;
+                  font-weight: 600;
+                  transition: all 0.3s ease;
+                }
+              
+                .download-button:hover {
+                  background: #5a67d8;
+                  transform: translateY(-2px);
+                }
+              
+                .progress-bar {
+                  width: 100%;
+                  height: 4px;
+                  background: #e2e8f0;
+                  border-radius: 2px;
+                  margin-top: 20px;
+                  overflow: hidden;
+                  display: none;
+                }
+              
+                .progress-bar-fill {
+                  height: 100%;
+                  background: #4299e1;
+                  width: 0%;
+                  transition: width 0.3s ease;
+                }
+              
+                @keyframes pulse {
+                  0% { transform: scale(1); }
+                  50% { transform: scale(1.05); }
+                  100% { transform: scale(1); }
+                }
+              
+                .converting .progress-bar {
+                  display: block;
+                }
+              
+                .converting .progress-bar-fill {
+                  animation: progress 2s infinite linear;
+                }
+              
+                @keyframes progress {
+                  0% { width: 0%; }
+                  100% { width: 100%; }
+                }
+
+
+                /* EMULADOR CASIO */
+                /* Contenedor principal */
+.emulador-container {
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+}
+
+/* Contenido flexible */
+.emulador-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 1000px;
+    text-align: left;
+}
+
+/* Imagen del emulador */
+.emulador-img {
+    max-width: 100%;
+    width: 450px;
+    height: auto;
+    margin-right: 20px;
+}
+
+/* Sección de texto */
+.text-content {
+    flex: 1;
+    max-width: 500px;
+}
+
+/* Título y descripción */
+.text-content h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+}
+
+.text-content p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Botones */
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Botón de descarga */
+.btn-download {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-download:hover {
+    background-color: #0056b3;
+}
+
+/* Botón de tutorial */
+.btn-tutorial {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-tutorial:hover {
+    background-color: #1e7e34;
+}
+
+/* 🔹 RESPONSIVE DESIGN 🔹 */
+@media (max-width: 768px) {
+    .emulador-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .emulador-img {
+        margin: 0 auto 20px auto;
+        width: 80%;
+    }
+
+    .text-content {
+        max-width: 100%;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-content h1 {
+        font-size: 28px;
+    }
+
+    .text-content p {
+        font-size: 16px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+
+
+              </style>
+              </head>
+              <body>
+
+ <section class="emulador-container">
+    <div class="emulador-content">
+        <img src="https://edu.casio.com/assets/images/products/classroom/fxesplusemuv300/main.png" alt="Emulador Casio fx-ES PLUS" class="emulador-img">
+        <div class="text-content">
+            <h1>Software para la serie fx-ES PLUS</h1>
+            <p>Obtén el software emulador de la serie fx-ES PLUS, una herramienta que permite realizar cálculos de manera similar a las calculadoras científicas Casio. Ideal para estudiantes y profesionales en matemáticas, física e ingeniería.</p>
+            <!-- Botones con atributos SEO-friendly -->
+            <div class="buttons">
+                <a href="https://drive.google.com/drive/folders/1m0rwF5P-bw-27vScqfJW6mGDfcwvOc8W?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn download-btn" title="Descargar emulador fx-ES PLUS">📥 Descargar</a>
+                <a href="https://youtu.be/qcsUiDK0J48?si=__MWzzXWHQ8y_2Ts" class="btn tutorial-btn" target="_blank" rel="noopener noreferrer" title="Ver tutorial de instalación">📺 Ver tutorial</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+            
+
+
+                <div class="converter-container">
+                  <div id="herramientas" class="converter-header">
+                    
+                    <h1>Convertidor PDF ↔ Word</h1>
+                    <p>Convierte tus archivos de forma rápida y segura</p>
+                  </div>
+              
+                  <form id="uploadForm" class="converter-box" id="drop-zone">
+
+                    
+                    <div class="file-input-wrapper">
+                      <input type="file" id="fileInput" class="file-input" accept=".pdf,.docx" />
+                      <label for="fileInput" class="file-label">Seleccionar archivo</label>
+                    </div>
+              
+                    <select class="conversion-type" id="conversionType">
+                      <option value="pdf-to-word">PDF a Word</option>
+                      <option value="word-to-pdf">Word a PDF</option>
+                    </select>
+              
+                    <div class="file-info" id="fileInfo">
+                      Formatos soportados: PDF, DOCX
+                    </div>
+              
+                    <button type="submit" class="convert-button" disabled>Convertir ahora</button>
+              
+                    <div class="progress-bar">
+                      <div class="progress-bar-fill"></div>
+                    </div>
+              
+                    <div class="status-message" id="status"></div>
+                  </form>
+              
+                  <div class="download-section" id="downloadSection">
+                    <h3>¡Conversión completada!</h3>
+                    <a href="#" class="download-button" id="downloadLink" target="_blank">Descargar archivo</a>
+                  </div>
+                </div>
+
+              
+              
+                <script>
+                  const uploadForm = document.getElementById("uploadForm");
+                  const fileInput = document.getElementById("fileInput");
+                  const fileInfo = document.getElementById("fileInfo");
+                  const statusText = document.getElementById("status");
+                  const downloadSection = document.getElementById("downloadSection");
+                  const downloadLink = document.getElementById("downloadLink");
+                  const convertButton = document.querySelector(".convert-button");
+                  const progressBar = document.querySelector(".progress-bar");
+                  
+                  // API Key de CloudConvert
+                  const API_KEY = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjczNGRlMGQ4YjNhYzdkMGM5NzgzNGU4Y2E1ODg0MWFmMTdlMDg2M2IzNzZjMzAzMmM0ZjE1NWIwZmIwMzg0MWYxZWU0NjBiYjljNjMxNDciLCJpYXQiOjE3MzY1MzM0OTMuNTgxODk0LCJuYmYiOjE3MzY1MzM0OTMuNTgxODk1LCJleHAiOjQ4OTIyMDcwOTMuNTc4NDY5LCJzdWIiOiI3MDcxMzY4MCIsInNjb3BlcyI6WyJ0YXNrLnJlYWQiLCJ0YXNrLndyaXRlIiwicHJlc2V0LnJlYWQiLCJwcmVzZXQud3JpdGUiXX0.TaEZUQ8UCoQXqw_UoAcwftbKxsMM94Zq663KzpQWiJzaogudxiP0oV8XerSUgCEB_EbCqz5-bAZj54hc7fMJc5dtklhUtUoKTEvDPknBjx5MTjcwRK1OmiRauP53ozYEngfPd4dl-MJVhJuPN-jVUtrz350A0I4ih7-AYCMULgBJ1apsUKMwj_TzkqJWcOSmO9jd4tRwee7UQZffKZ1gYxmKW1DuMgYtwjXoNk6wVqGfmJfchFPz4hSbgJCFM9C63QbecHxHXiXBZg1FZ2PAj7IA0KdvuCmQTOzWx55Q0zB1uwsvcxpCn2e2zs4rWmQI2x9kn41CoVXp-jmBFbrgJmRQpM0HNPgoE6jemyVdyVltwTwXopBEB6zd-YI9ZYkxTQzLN53cVipM4PtQ0mWIxsTqJheN_VNlO2t1La5V3JRQY7jumEb0URXizrcU-PcitVvnL3HtxrGQdyMN7AW2eEZCcyJqiyLNrcOWnzSQbD5nuSzLirrIg1tkvRTt-bYSz7mCkGsesfCCOxPydnflv0Zhlxnn11jBAj9h3xGffC_U3LMvwyDbh1-SqvzXH_X3jUHUtoKgxBWUWwbbgiFdwGlfj0s_HyvQdxVs6DeMVc6_da5iNDiTsb70YvgebQznpIHNrWGX1h75spVdPxCC0eZB8zMZJSeTEClp2QMjEf4";
+              
+                  fileInput.addEventListener('change', function(e) {
+                    if (this.files.length > 0) {
+                      fileInfo.textContent = `Archivo seleccionado: ${this.files[0].name}`;
+                      convertButton.disabled = false;
+                    } else {
+                      fileInfo.textContent = "Formatos soportados: PDF, DOCX";
+                      convertButton.disabled = true;
+                    }
+                  });
+              
+                  uploadForm.addEventListener("submit", async (event) => {
+                    event.preventDefault();
+              
+                    const file = fileInput.files[0];
+                    const conversionType = document.getElementById("conversionType").value;
+              
+                    if (!file) {
+                      showStatus("Por favor, selecciona un archivo.", "error");
+                      return;
+                    }
+              
+                    const inputFormat = file.name.split(".").pop().toLowerCase();
+                    const outputFormat = conversionType === "pdf-to-word" ? "docx" : "pdf";
+              
+                    // Mostrar progreso y deshabilitar botón
+                    convertButton.disabled = true;
+                    progressBar.style.display = "block";
+                    uploadForm.classList.add("converting");
+                    showStatus("Subiendo archivo y procesando conversión...", "info");
+                    downloadSection.style.display = "none";
+              
+                    try {
+                      // Crear tarea en CloudConvert
+                      const taskResponse = await fetch("https://api.cloudconvert.com/v2/jobs", {
+                        method: "POST",
+                        headers: {
+                          Authorization: `Bearer ${API_KEY}`,
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                          tasks: {
+                            import: {
+                              operation: "import/upload"
+                            },
+                            convert: {
+                              operation: "convert",
+                              input: "import",
+                              input_format: inputFormat,
+                              output_format: outputFormat
+                            },
+                            export: {
+                              operation: "export/url",
+                              input: "convert"
+                            }
+                          }
+                        })
+                      });
+              
+                      const taskData = await taskResponse.json();
+              
+                      if (!taskResponse.ok) {
+                        throw new Error(taskData.message || "Error al crear la tarea.");
+                      }
+              
+                      const uploadTask = taskData.data.tasks.find(task => task.name === "import");
+                      const uploadURL = uploadTask.result.form.url;
+              
+                      // Subir archivo
+                      const uploadResponse = await fetch(uploadURL, {
+                        method: "PUT",
+                        body: file
+                      });
+              
+                      if (!uploadResponse.ok) {
+                        throw new Error("Error al subir el archivo.");
+                      }
+              
+                      showStatus("Convirtiendo archivo...", "info");
+              
+                      // Esperar la conversión
+                      let exportURL = null;
+                      while (!exportURL) {
+                        const jobStatusResponse = await fetch(
+                          `https://api.cloudconvert.com/v2/jobs/${taskData.data.id}`,
+                          {
+                            headers: {
+                              Authorization: `Bearer ${API_KEY}`
+                            }
+                          }
+                        );
+              
+                        const jobStatusData = await jobStatusResponse.json();
+                        const exportTask = jobStatusData.data.tasks.find(
+                          task => task.name === "export" && task.status === "finished"
+                        );
+              
+                        if (exportTask) {
+                          exportURL = exportTask.result.files[0].url;
+                        } else {
+                          await new Promise(resolve => setTimeout(resolve, 1000));
+                        }
+                      }
+              
+                      // Mostrar enlace de descarga
+                      showStatus("¡Conversión completada!", "success");
+                      downloadLink.href = exportURL;
+                      downloadSection.style.display = "block";
+                    } catch (error) {
+                      console.error(error);
+                      showStatus("Error en la conversión. Por favor, inténtalo nuevamente.", "error");
+                    } finally {
+                      // Restaurar estado inicial
+                      convertButton.disabled = false;
+                      uploadForm.classList.remove("converting");
+                      progressBar.style.display = "none";
+                    }
+                  });
+              
+                  function showStatus(message, type = "info") {
+                    statusText.textContent = message;
+                    statusText.style.display = "block";
+                    statusText.className = `status-message ${type}`;
+                  }
+              
+                  // Soporte para drag and drop
+                  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                    uploadForm.addEventListener(eventName, preventDefaults, false);
+                  });
+              
+                  function preventDefaults (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }
+              
+                  ['dragenter', 'dragover'].forEach(eventName => {
+                    uploadForm.addEventListener(eventName, highlight, false);
+                  });
+              
+                  ['dragleave', 'drop'].forEach(eventName => {
+                    uploadForm.addEventListener(eventName, unhighlight, false);
+                });
+
+                function highlight(e) {
+                uploadForm.style.borderColor = '#4299e1';
+                uploadForm.style.backgroundColor = '#ebf8ff';
+                }
+
+                function unhighlight(e) {
+                uploadForm.style.borderColor = '#cbd5e0';
+                uploadForm.style.backgroundColor = '#ffffff';
+                }
+
+                uploadForm.addEventListener('drop', handleDrop, false);
+
+                function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                
+                if (files.length > 0) {
+                    fileInput.files = files;
+                    fileInfo.textContent = `Archivo seleccionado: ${files[0].name}`;
+                    convertButton.disabled = false;
+                    
+                    // Verificar el formato del archivo
+                    const fileExtension = files[0].name.split('.').pop().toLowerCase();
+                    if (fileExtension === 'pdf') {
+                    document.getElementById('conversionType').value = 'pdf-to-word';
+                    } else if (fileExtension === 'docx') {
+                    document.getElementById('conversionType').value = 'word-to-pdf';
+                    }
+                }
+                }
+
+                // Actualizar el tipo de conversión basado en el archivo seleccionado
+                fileInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    const fileExtension = this.files[0].name.split('.').pop().toLowerCase();
+                    if (fileExtension === 'pdf') {
+                    document.getElementById('conversionType').value = 'pdf-to-word';
+                    } else if (fileExtension === 'docx') {
+                    document.getElementById('conversionType').value = 'word-to-pdf';
+                    }
+                }
+                });
+                </script>
+
+            
+		
+                
+    		<section class="container top-products">
+				<h1 class="heading-1">Últimos Blogs</h1>
+			
+				<div class="container-blogs" id="blog-list">
+					<!-- Blog 1 -->
+					<div class="card-blog" data-id="blog1">
+						<div class="container-img">
+							<img src="img/libro1.jpg" alt="Imagen Blog 1" />
+							<div class="button-group-blog">
+								<span><i class="fa-solid fa-magnifying-glass"></i></span>
+								<span><i class="fa-solid fa-link"></i></span>
+							</div>
+						</div>
+						<div class="content-blog">
+							<h3>Análisis Matemático y su Importancia Actual</h3>
+							<span>29 Noviembre 2022</span>
+							<div class="blog-content">
+								<p class="initial-content">
+									La obra "Análisis Matemático" de Eduardo Espinoza Ramos no solo cubre los fundamentos
+									teóricos del análisis matemático, sino que también proporciona herramientas prácticas 
+									esenciales para disciplinas como la ingeniería, las ciencias físicas y la economía.
+								</p>
+								<div class="full-content" style="display: none">
+									<p>
+										En sus cuatro tomos, aborda temas que van desde los números reales y funciones hasta el
+										cálculo diferencial e integral. En un mundo donde los algoritmos matemáticos impulsan 
+										tecnologías como la inteligencia artificial, estos conocimientos se han vuelto 
+										indispensables.
+									</p>
+									<p>
+										En particular, el tomo IV incluye aplicaciones prácticas en optimización y 
+										modelado, fundamentales en el desarrollo de sistemas inteligentes. Además, 
+										el enfoque pedagógico de Espinoza Ramos facilita la comprensión de conceptos 
+										complejos, haciendo de esta obra un recurso imprescindible tanto para estudiantes 
+										como para profesionales.
+									</p>
+								</div>
+							</div>
+							<div class="btn-read-more" >
+								<a href="blogs.html?blog=1" class="no-underline" >Leer más</a>
+							</div>
+						</div>
+					</div>
+	
+					<!-- Blog 2 -->
+					<div class="card-blog" data-id="blog2">
+						<div class="container-img">
+							<img src="img/blog-3.jpeg" alt="Imagen Blog 2" />
+							<div class="button-group-blog">
+								<span><i class="fa-solid fa-magnifying-glass"></i></span>
+								<span><i class="fa-solid fa-link"></i></span>
+							</div>
+						</div>
+						<div class="content-blog">
+							<h3>El Impacto de la Inteligencia Artificial en 2024</h3>
+							<span>29 Noviembre 2022</span>
+							<div class="blog-content">
+								<p class="initial-content">
+									La inteligencia artificial (IA) está transformando diversas industrias. Este año, 
+									tecnologías avanzadas como los modelos generativos han demostrado su potencial en 
+									campos como la creatividad digital y la productividad empresarial.
+								</p>
+								<div class="full-content" style="display: none">
+									<p>
+										Por ejemplo, herramientas como GPT-4 y DALL-E están permitiendo a los usuarios 
+										generar contenido de alta calidad con mayor facilidad. Además, sectores como la 
+										salud y la educación han visto un incremento en el uso de la IA para mejorar procesos.
+									</p>
+									<p>
+										En salud, sistemas de diagnóstico asistidos por IA han reducido tiempos de espera 
+										y mejorado la precisión en tratamientos. Mientras tanto, en educación, plataformas 
+										adaptativas están personalizando la experiencia de aprendizaje.
+									</p>
+									<p>
+										Sin embargo, este crecimiento también plantea desafíos éticos y de privacidad que 
+										deben ser abordados por regulaciones sólidas y una discusión global sobre el uso 
+										responsable de estas tecnologías.
+									</p>
+								</div>
+							</div>
+							<!-- <button class="btn-read-more" data-action="expand">Leer más</button> -->
+							<div class="btn-read-more" >
+								<a href="blogs.html?blog=2" class="no-underline" >Leer más</a>
+							</div>
+						</div>
+					</div>
+	
+					<!-- Blog 3 -->
+					<div class="card-blog" data-id="blog3">
+						<div class="container-img">
+							<img src="img/blog-2.png" alt="Imagen Blog 3" />
+							<div class="button-group-blog">
+								<span><i class="fa-solid fa-magnifying-glass"></i></span>
+								<span><i class="fa-solid fa-link"></i></span>
+							</div>
+						</div>
+						<div class="content-blog">
+							<h3>Tecnologías Emergentes en el Desarrollo Web</h3>
+							<span>29 Noviembre 2022</span>
+							<div class="blog-content">
+								<p class="initial-content">
+									En el ámbito del desarrollo web, las tecnologías emergentes están marcando tendencias 
+									clave. Frameworks como React, Angular y Vue continúan dominando, ofreciendo a los 
+									desarrolladores herramientas para crear interfaces más dinámicas y eficientes.
+								</p>
+								<div class="full-content" style="display: none">
+									<p>
+										Además, los lenguajes TypeScript y Rust están ganando popularidad debido a su 
+										capacidad para manejar aplicaciones a gran escala. Otra innovación notable es la 
+										integración de tecnologías de Web3, como blockchain, en aplicaciones descentralizadas.
+									</p>
+									<p>
+										Estas soluciones están cambiando la manera en que los usuarios interactúan con la web, 
+										promoviendo una mayor privacidad y seguridad de datos. Asimismo, el diseño responsive 
+										y el uso de Progressive Web Apps (PWA) han pasado a ser estándares esenciales.
+									</p>
+									<p>
+										Estas tendencias subrayan la importancia de mantenerse actualizado en un campo en 
+										constante evolución, donde la innovación y la adaptabilidad son clave para el éxito.
+									</p>
+								</div>
+							</div>
+							<div class="btn-read-more" >
+								<a href="blogs.html?blog=3" class="no-underline" >Leer más</a>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+	
+				<div id="blog-detail" style="display: none; position: relative;">
+					<div id="detail-content" class="detail-content"></div>
+					<div style="text-align: center; margin: 20px 0;">
+						<button id="btn-back">Regresar</button>
+					</div>
+				</div>
+				
+			</section>
+		</main>
+
+		<footer class="footer">
+			<div class="container container-footer">
+				<div class="menu-footer">
+					<div class="contact-info">
+						<p class="title-footer">Información de Contacto</p>
+						<ul>
+							<li>Teléfono: +51 916-529-268</li>
+							<li>EmaiL: josesantistebancasusol@gmail.com</li>
+						</ul>
+						<div class="social-icons">
+							<span class="facebook">
+								<a href="https://www.facebook.com/AprendeConJS" target="_blank" rel="noopener noreferrer">
+									<i class="fa-brands fa-facebook-f"></i>
+								</a>
+							</span>
+							
+							<span class="youtube">
+								<a href="https://www.youtube.com/@AprendeConJS" target="_blank" rel="noopener noreferrer">
+									<i class="fa-brands fa-youtube"></i>
+								</a>
+							</span>
+							
+							<span class="instagram">
+								<a href="https://www.instagram.com/jose._.sc/" target="_blank" rel="noopener noreferrer">
+									<i class="fa-brands fa-instagram"></i>
+								</a>
+							</span>
+
+							<span class="tiktok">
+								<a href="https://www.tiktok.com/@jose._.santisteban" target="_blank" rel="noopener noreferrer">
+									<i class="fa-brands fa-tiktok"></i>
+								</a>
+							</span>
+
+							<span class="whatsapp ">
+								<a href="https://whatsapp.com/channel/0029Va6ULLfKWEKjrV09g62o" target="_blank" rel="noopener noreferrer">
+									<i class="fa-brands fa-whatsapp"></i>
+								</a>
+							</span>
+						</div>
+						
+					</div>
+
+					<div class="information">
+						<p class="title-footer">Información</p>
+						<ul>
+							<li><a href="sobremi.html#sobre-mi">Acerca de Nosotros</a></li>
+							<li><a href="contacto.html#contacto">Contactános</a></li>
+						</ul>
+					</div>
+
+					<div class="my-account">
+						<p class="title-footer">Manejo de Datos</p>
+
+						<ul>
+							<li><a href="terminos.html#top-politics">Politicas de Privacidad</a></li>
+							<li><a href="terminos.html#top-termins">Términos y condiciones</a></li>
+							<li><a href="terminos.html#top-cookies">Políticas de Cookies</a></li>
+
+						</ul>
+					</div>
+
+					<div class="information">
+						<p class="title-footer">Dirección</p>
+						<ul>
+							<li>
+								Dirección: Ca. Calle N°1, Curva Tranca Sasape, Mórrope, Lambayeque.
+							</li>
+						</ul>
+					</div>
+
+				<!--	<div class="newsletter">
+						<p class="title-footer">Dirección</p>
+
+						<div class="content">
+							<li>
+								Dirección: Ca. Calle N°1, Curva Tranca Sasape, Mórrope, Lambayeque.
+							</li>
+							<input type="email" placeholder="Ingresa el correo aquí...">
+							<button>Suscríbete</button>
+						</div>
+					</div> -->
+				</div>
+
+				<div class="copyright">
+					<p>
+						Desarrollado por José Santisteban Casusol &copy; 2024
+					</p>
+
+					<img src="img/payment.png" alt="Pagos">
+				</div>
+			</div>
+		</footer>
+
+		<script src="https://kit.fontawesome.com/5f3b5b42d8.js" crossorigin="anonymous"></script>
+
+		<script src="menu.js"></script>
+		
+
+
+		<script>
+			// Función para aceptar cookies
+			document.getElementById('accept-cookies').onclick = function() {
+				document.cookie = "cookies_accepted=true; max-age=" + 60*60*24*30; // 30 días
+				document.getElementById('cookie-consent-banner').style.display = 'none';
+			};
+		
+			// Comprobar si la cookie ya fue aceptada
+			if (document.cookie.split(';').some((item) => item.trim().startsWith('cookies_accepted='))) {
+				document.getElementById('cookie-consent-banner').style.display = 'none';
+			} else {
+				// Si no se ha aceptado, mostrar el banner
+				document.getElementById('cookie-consent-banner').style.display = 'block';
+			}
+		</script>
+
+	</body>
+</html>

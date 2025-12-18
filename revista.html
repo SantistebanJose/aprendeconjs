@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConVivir - Revista Digital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .magazine-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .page {
+            min-height: 100vh;
+            padding: 40px;
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .magazine-title {
+            font-size: 3.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .date-section {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .page-title {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #3498db, #2c3e50);
+            border-radius: 2px;
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #3498db, #2c3e50);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: slide 10s infinite linear;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100px); }
+        }
+
+        .text-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #34495e;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .highlight-title {
+            font-size: 1.4em;
+            color: #c0392b;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .list-styled {
+            counter-reset: item-counter;
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .list-styled li {
+            counter-increment: item-counter;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .list-styled li::before {
+            content: counter(item-counter);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #3498db;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .nav-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .nav-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .page-indicator {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(52, 152, 219, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            z-index: 1000;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .quote-box {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            font-style: italic;
+            font-size: 1.2em;
+            text-align: center;
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4em;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        .authors-section {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+        }
+
+        .authors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .author-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .author-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .stats-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            background: linear-gradient(45deg, #3498db, #2c3e50);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .index-page {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .index-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            margin: 15px 0;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid #3498db;
+        }
+
+        .index-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .index-number {
+            background: #3498db;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .page {
+                padding: 20px;
+            }
+            
+            .magazine-title {
+                font-size: 2.5em;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation {
+                bottom: 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="magazine-container">
+        <div class="page-indicator">
+            Página <span id="current-page">1</span> de 10
+        </div>
+
+        <!-- Página 1: Portada -->
+        <div class="page active" id="page-1">
+            <div class="header">
+                <h1 class="magazine-title">ConVivir</h1>
+                <p class="subtitle">Revista Digital sobre Convivencia y Respeto</p>
+                <div class="date-section">
+                    <strong>Edición Especial</strong><br>
+                    Derechos y Deberes para una Buena Convivencia<br>
+                    Julio 2025
+                </div>
+            </div>
+
+            <div class="image-placeholder">
+                <div>🤝 Imagen: Estudiantes conviviendo en armonía</div>
+            </div>
+
+            <div class="content-section">
+                <h2 style="text-align: center; color: #2c3e50; margin-bottom: 20px;">Bienvenidos a ConVivir</h2>
+                <p class="text-content">
+                    En esta edición especial, exploramos los fundamentos de una convivencia sana y respetuosa. 
+                    Descubriremos juntos cómo construir un ambiente escolar donde todos podamos desarrollarnos 
+                    plenamente, respetando nuestros derechos y cumpliendo con nuestros deberes.
+                </p>
+                
+                <div class="stats-box">
+                    <div class="stat-item">
+                        <div class="stat-number">10</div>
+                        <div>Páginas de Contenido</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5</div>
+                        <div>Autores Colaboradores</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">∞</div>
+                        <div>Posibilidades de Mejora</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="authors-section">
+                <h3 style="text-align: center; margin-bottom: 20px;">👥 Equipo Editorial</h3>
+                <div class="authors-grid">
+                    <div class="author-card">Sandoval Santisteban, Gisela</div>
+                    <div class="author-card">Baldera Bances, Nataly Nicole</div>
+                    <div class="author-card">Valdera Ventura, Juan Manuel</div>
+                    <div class="author-card">More Guevara, Bhins Evis</div>
+                    <div class="author-card">Piscoya Bances, Greysi Antonela</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página 2: Índice -->
+        <div class="page" id="page-2">
+            <h1 class="page-title">📋 Índice</h1>
+            
+            <div class="index-page">
+                <div class="index-item" onclick="goToPage(3)">
+                    <div class="index-number">1</div>
+                    <div>
+                        <h3>Introducción</h3>
+                        <p>La convivencia como base de la sociedad</p>
+                    </div>
+                </div>
+                
+                <div class="index-item" onclick="goToPage(4)">
+                    <div class="index-number">2</div>
+                    <div>
+                        <h3>Clave de la Convivencia</h3>
+                        <p>Los elementos fundamentales para vivir en armonía</p>
+                    </div>
+                </div>
+                
+                <div class="index-item" onclick="goToPage(5)">
+                    <div class="index-number">3</div>
+                    <div>
+                        <h3>Derechos Fundamentales</h3>
+                        <p>Conoce tus derechos básicos para la convivencia</p>
+                    </div>
+                </div>
+                
+                <div class="index-item" onclick="goToPage(6)">
+                    <div class="index-number">4</div>
+                    <div>
+                        <h3>Deberes Fundamentales</h3>
+                        <p>Responsabilidades para una convivencia armoniosa</p>
+                    </div>
+                </div>
+                
+                <div class="index-item" onclick="goToPage(7)">
+                    <div class="index-number">5</div>
+                    <div>
+                        <h3>Deberes para una Convivencia Pacífica</h3>
+                        <p>Construyendo puentes hacia la paz</p>
+                    </div>
+                </div>
+                
+                <div class="index-item" onclick="goToPage(8)">
+                    <div class="index-number">6</div>
+                    <div>
+                        <h3>Entendiendo la Importancia del Respeto</h3>
+                        <p>El respeto como pilar de la convivencia escolar</p>
+                    </div>
+                </div>
+                
+                <div class="index-item" onclick="goToPage(9)">
+                    <div class="index-number">7</div>
+                    <div>
+                        <h3>Cómo la Tolerancia Mejora Nuestra Convivencia</h3>
+                        <p>La tolerancia como herramienta de unión</p>
+                    </div>
+                </div>
+                
+                <div class="index-item" onclick="goToPage(10)">
+                    <div class="index-number">8</div>
+                    <div>
+                        <h3>Actividades para Practicar la Buena Convivencia</h3>
+                        <p>Ejercicios prácticos para mejorar nuestras relaciones</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página 3: Introducción -->
+        <div class="page" id="page-3">
+            <h1 class="page-title">🌟 Introducción</h1>
+            
+            <div class="image-placeholder">
+                <div>🌍 Imagen: Comunidad diversa trabajando juntos</div>
+            </div>
+
+            <div class="content-section">
+                <p class="text-content">
+                    La convivencia humana es uno de los pilares fundamentales sobre los que se construye 
+                    cualquier sociedad próspera y armoniosa. En el contexto educativo, esta convivencia 
+                    adquiere una dimensión especial, ya que la escuela no solo es un lugar de aprendizaje 
+                    académico, sino también un espacio donde se forman ciudadanos responsables y respetuosos.
+                </p>
+
+                <div class="highlight-box">
+                    <h3 class="highlight-title">💡 ¿Qué es la Convivencia?</h3>
+                    <p>La convivencia es el arte de vivir en compañía de otros, respetando las diferencias 
+                    y construyendo espacios de diálogo y comprensión mutua. En la escuela, esto significa 
+                    crear un ambiente donde todos los miembros de la comunidad educativa puedan desarrollar 
+                    su potencial de manera integral.</p>
+                </div>
+
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">🎯 Objetivos de la Convivencia</h3>
+                        <ul class="list-styled">
+                            <li>Promover el respeto mutuo entre todos los miembros de la comunidad</li>
+                            <li>Crear espacios de diálogo constructivo</li>
+                            <li>Fomentar la tolerancia y la comprensión</li>
+                            <li>Desarrollar habilidades sociales</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">🔑 Elementos Clave</h3>
+                        <ul class="list-styled">
+                            <li>Comunicación efectiva</li>
+                            <li>Respeto por la diversidad</li>
+                            <li>Resolución pacífica de conflictos</li>
+                            <li>Participación activa y democrática</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    La convivencia no es solo coexistir, es crear juntos un espacio donde todos podamos 
+                    florecer y desarrollar nuestro máximo potencial.
+                </div>
+
+                <p class="text-content">
+                    En las siguientes páginas exploraremos cómo cada uno de nosotros puede contribuir 
+                    a construir este ideal de convivencia, conociendo nuestros derechos y asumiendo 
+                    nuestros deberes con responsabilidad y compromiso.
+                </p>
+            </div>
+        </div>
+
+        <!-- Página 4: Clave de la Convivencia -->
+        <div class="page" id="page-4">
+            <h1 class="page-title">🔑 Clave de la Convivencia</h1>
+            
+            <div class="image-placeholder">
+                <div>🤝 Imagen: Estudiantes colaborando en equipo</div>
+            </div>
+
+            <div class="content-section">
+                <p class="text-content">
+                    La clave de una convivencia exitosa radica en el equilibrio perfecto entre conocer 
+                    nuestros derechos y cumplir con nuestros deberes. Este equilibrio no es estático, 
+                    sino dinámico, y requiere de nuestra participación activa y consciente cada día.
+                </p>
+
+                <div class="highlight-box">
+                    <h3 class="highlight-title">🎯 Los Cuatro Pilares Fundamentales</h3>
+                    <p>Una convivencia sana se sustenta en cuatro pilares fundamentales que debemos 
+                    cultivar y fortalecer constantemente en nuestra comunidad educativa.</p>
+                </div>
+
+                <div class="stats-box">
+                    <div class="stat-item">
+                        <div class="stat-number">1</div>
+                        <div><strong>Respeto</strong><br>Base de toda relación humana</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2</div>
+                        <div><strong>Tolerancia</strong><br>Aceptación de las diferencias</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div><strong>Comunicación</strong><br>Diálogo constructivo</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4</div>
+                        <div><strong>Participación</strong><br>Compromiso activo</div>
+                    </div>
+                </div>
+
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">💎 Valores Esenciales</h3>
+                        <ul class="list-styled">
+                            <li><strong>Honestidad:</strong> Ser auténticos en nuestras relaciones</li>
+                            <li><strong>Empatía:</strong> Comprender las emociones de otros</li>
+                            <li><strong>Solidaridad:</strong> Apoyar a quienes nos necesitan</li>
+                            <li><strong>Responsabilidad:</strong> Asumir las consecuencias de nuestros actos</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">🛠️ Herramientas Prácticas</h3>
+                        <ul class="list-styled">
+                            <li><strong>Escucha activa:</strong> Prestar atención plena a otros</li>
+                            <li><strong>Asertividad:</strong> Expresar ideas con respeto</li>
+                            <li><strong>Mediación:</strong> Resolver conflictos pacíficamente</li>
+                            <li><strong>Inclusión:</strong> Integrar a todos sin distinción</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="image-placeholder">
+                    <div>📊 Gráfico: Ciclo de la Convivencia Positiva</div>
+                </div>
+
+                <p class="text-content">
+                    La convivencia es un proceso continuo que requiere del esfuerzo conjunto de toda 
+                    la comunidad educativa. Cada acción positiva que realizamos contribuye a crear 
+                    un ambiente más armonioso y propicio para el aprendizaje y el crecimiento personal.
+                </p>
+            </div>
+        </div>
+
+        <!-- Página 5: Derechos Fundamentales -->
+        <div class="page" id="page-5">
+            <h1 class="page-title">⚖️ Derechos Fundamentales</h1>
+            
+            <div class="image-placeholder">
+                <div>🏛️ Imagen: Balanza de la justicia y derechos humanos</div>
+            </div>
+
+            <div class="content-section">
+                <p class="text-content">
+                    Los derechos fundamentales son las garantías básicas que posee cada individuo por 
+                    el simple hecho de ser persona. En el contexto educativo, estos derechos adquieren 
+                    una importancia especial, ya que garantizan un ambiente propicio para el aprendizaje 
+                    y el desarrollo integral de todos los estudiantes.
+                </p>
+
+                <div class="highlight-box">
+                    <h3 class="highlight-title">🎯 Derechos Básicos en la Escuela</h3>
+                    <p>Todos los miembros de la comunidad educativa tienen derechos inalienables que 
+                    deben ser respetados y protegidos para garantizar una convivencia justa y equitativa.</p>
+                </div>
+
+                <ul class="list-styled">
+                    <li>
+                        <strong>Derecho a la Educación:</strong> Todos tenemos derecho a recibir una 
+                        educación de calidad, sin discriminación alguna, que nos permita desarrollar 
+                        nuestras capacidades y talentos al máximo.
+                    </li>
+                    <li>
+                        <strong>Derecho al Respeto:</strong> Cada persona merece ser tratada con dignidad 
+                        y consideración, independientemente de sus características personales, origen 
+                        social o creencias.
+                    </li>
+                    <li>
+                        <strong>Derecho a la Participación:</strong> Todos tenemos derecho a expresar 
+                        nuestras opiniones y participar activamente en las decisiones que nos afectan 
+                        dentro de la comunidad educativa.
+                    </li>
+                    <li>
+                        <strong>Derecho a la Seguridad:</strong> Tenemos derecho a desenvolvernos en 
+                        un ambiente seguro, libre de violencia física, psicológica o cualquier forma 
+                        de acoso.
+                    </li>
+                    <li>
+                        <strong>Derecho a la Diversidad:</strong> Todos tenemos derecho a ser diferentes 
+                        y a que esas diferencias sean respetadas y valoradas como parte de la riqueza 
+                        de nuestra comunidad.
+                    </li>
+                </ul>
+
+                <div class="two-column">
+                    <div>
+                        <div class="image-placeholder" style="height: 200px;">
+                            <div>📚 Imagen: Estudiantes en biblioteca</div>
+                        </div>
+                        <h4 style="color: #2c3e50; margin: 15px 0;">Derecho al Aprendizaje</h4>
+                        <p>Cada estudiante tiene derecho a acceder a recursos educativos, metodologías 
+                        apropiadas y apoyo necesario para su proceso de aprendizaje.</p>
+                    </div>
+                    <div>
+                        <div class="image-placeholder" style="height: 200px;">
+                            <div>🗣️ Imagen: Estudiantes expresando ideas</div>
+                        </div>
+                        <h4 style="color: #2c3e50; margin: 15px 0;">Derecho a la Expresión</h4>
+                        <p>Todos tenemos derecho a expresar nuestras ideas, sentimientos y opiniones 
+                        de manera libre y respetuosa.</p>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    Los derechos no son privilegios que se ganan, sino garantías que se tienen por 
+                    el simple hecho de ser humano.
+                </div>
+            </div>
+        </div>
+
+        <!-- Página 6: Deberes Fundamentales -->
+        <div class="page" id="page-6">
+            <h1 class="page-title">📋 Deberes Fundamentales</h1>
+            
+            <div class="image-placeholder">
+                <div>🤝 Imagen: Estudiantes cumpliendo responsabilidades</div>
+            </div>
+
+            <div class="content-section">
+                <p class="text-content">
+                    Los deberes son las responsabilidades que tenemos como miembros de una comunidad. 
+                    Así como tenemos derechos que nos protegen, también tenemos deberes que cumplir 
+                    para garantizar que todos puedan disfrutar de esos mismos derechos en un ambiente 
+                    de respeto y armonía.
+                </p>
+
+                <div class="highlight-box">
+                    <h3 class="highlight-title">⚖️ Equilibrio entre Derechos y Deberes</h3>
+                    <p>Una convivencia sana requiere que comprendamos que nuestros derechos terminan 
+                    donde comienzan los derechos de los demás, y que nuestros deberes son la garantía 
+                    de que todos podamos ejercer nuestros derechos plenamente.</p>
+                </div>
+
+                <ul class="list-styled">
+                    <li>
+                        <strong>Deber del Respeto Mutuo:</strong> Debemos tratar a todos los miembros 
+                        de nuestra comunidad con respeto, dignidad y consideración, reconociendo su 
+                        valor como personas únicas e importantes.
+                    </li>
+                    <li>
+                        <strong>Deber de la Responsabilidad:</strong> Tenemos la obligación de asumir 
+                        las consecuencias de nuestros actos y decisiones, buscando siempre el bien 
+                        común y evitando dañar a otros.
+                    </li>
+                    <li>
+                        <strong>Deber de la Participación Constructiva:</strong> Debemos contribuir 
+                        activamente al bienestar de nuestra comunidad, participando en actividades 
+                        que promuevan la convivencia pacífica y el desarrollo colectivo.
+                    </li>
+                    <li>
+                        <strong>Deber del Cuidado del Ambiente:</strong> Tenemos la responsabilidad 
+                        de cuidar y preservar los espacios comunes, manteniendo limpio y ordenado 
+                        nuestro entorno educativo.
+                    </li>
+                    <li>
+                        <strong>Deber de la Solidaridad:</strong> Debemos apoyar a quienes nos necesitan, 
+                        brindando ayuda y comprensión a nuestros compañeros en momentos difíciles.
+                    </li>
+                </ul>
+
+                <div class="two-column">
+                    <div>
+                        <div class="image-placeholder" style="height: 200px;">
+                            <div>📝 Imagen: Estudiantes estudiando juntos</div>
+                        </div>
+                        <h4 style="color: #2c3e50; margin: 15px 0;">Deber del Aprendizaje</h4>
+                        <p>Tenemos el deber de aprovechar las oportunidades educativas, esforzarnos 
+                        por aprender y contribuir al ambiente de aprendizaje de todos.</p>
+                    </div>
+                    <div>
+                        <div class="image-placeholder" style="height: 200px;">
+                            <div>🤝 Imagen: Estudiantes ayudándose mutuamente</div>
+                        </div>
+                        <h4 style="color: #2c3e50; margin: 15px 0;">Deber de la Colaboración</h4>
+                        <p>Debemos trabajar en equipo, compartir conocimientos y apoyar el crecimiento 
+                        de todos los miembros de nuestra comunidad.</p>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    Nuestros deberes no son cargas, sino oportunidades para construir una comunidad 
+                    más fuerte y unida.
+                </div>
+
+                <p class="text-content">
+                    El cumplimiento de nuestros deberes no solo beneficia a otros, sino que también 
+                    nos ayuda a crecer como personas responsables y comprometidas con el bienestar 
+                    de nuestra comunidad. Cada acto de responsabilidad contribuye a crear un ambiente 
+                    más armonioso para todos.
+                </p>
+            </div>
+        </div>
+
+        <!-- Página 7: Deberes para una Convivencia Pacífica -->
+        <div class="page" id="page-7">
+            <h1 class="page-title">🕊️ Deberes para una Convivencia Pacífica</h1>
+            
+            <div class="image-placeholder">
+                <div>🌈 Imagen: Estudiantes de diferentes culturas conviviendo</div>
+            </div>
+
+            <div class="content-section">
+                <p class="text-content">
+                    La construcción de una convivencia pacífica requiere del compromiso activo de 
+                    todos los miembros de la comunidad educativa. No basta con evitar el conflicto; 
+                    debemos trabajar proactivamente para crear un ambiente donde la paz sea una 
+                    realidad vivida y compartida por todos.
+                </p>
+
+                <div class="highlight-box">
+                    <h3 class="highlight-title">🎯 La Paz como Construcción Colectiva</h3>
+                    <p>La paz no es simplemente la ausencia de conflictos, sino la presencia activa 
+                    de justicia, respeto y oportunidades para todos. Es un proceso que requiere 
+                    del esfuerzo consciente y coordinado de toda la comunidad.</p>
+                </div>
+
+                <div class="stats-box">
+                    <div class="stat-item">
+                        <div class="stat-number">🤝</div>
+                        <div><strong>Mediación</strong><br>Resolver conflictos pacíficamente</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">💬</div>
+                        <div><strong>Diálogo</strong><br>Comunicación abierta y honesta</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">🌱</div>
+                        <div><strong>Prevención</strong><br>Anticiparse a los problemas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">🤗</div>
+                        <div><strong>Reconciliación</strong><br>Sanar las heridas del pasado</div>
+                    </div>
+                </div>
+
+                <ul class="list-styled">
+                    <li>
+                        <strong>Deber de la Comunicación Asertiva:</strong> Debemos expresar nuestras 
+                        ideas y sentimientos de manera clara, honesta y respetuosa, buscando siempre 
+                        el entendimiento mutuo y evitando palabras que puedan herir o ofender.
+                    </li>
+                    <li>
+                        <strong>Deber de la Resolución Pacífica:</strong> Tenemos la responsabilidad 
+                        de buscar soluciones no violentas a los conflictos, utilizando el diálogo 
+                        y la negociación como herramientas principales.
+                    </li>
+                    <li>
+                        <strong>Deber de la Prevención:</strong> Debemos trabajar para prevenir 
+                        situaciones que puedan generar conflictos, creando ambientes de confianza 
+                        y comprensión mutua.
+                    </li>
+                    <li>
+                        <strong>Deber de la Inclusión:</strong> Tenemos la obligación de incluir 
+                        a todos los miembros de nuestra comunidad, sin discriminación, creando 
+                        espacios donde todos se sientan valorados y respetados.
+                    </li>
+                </ul>
+
+                <div class="two-column">
+                    <div>
+                        <div class="image-placeholder" style="height: 200px;">
+                            <div>🗣️ Imagen: Círculo de diálogo estudiantil</div>
+                        </div>
+                        <h4 style="color: #2c3e50; margin: 15px 0;">Espacios de Diálogo</h4>
+                        <p>Crear y mantener espacios donde todos puedan expresarse libremente 
+                        y ser escuchados con respeto y atención.</p>
+                    </div>
+                    <div>
+                        <div class="image-placeholder" style="height: 200px;">
+                            <div>🌟 Imagen: Estudiantes celebrando la diversidad</div>
+                        </div>
+                        <h4 style="color: #2c3e50; margin: 15px 0;">Celebración de la Diversidad</h4>
+                        <p>Reconocer y celebrar las diferencias como una fuente de enriquecimiento 
+                        mutuo y crecimiento colectivo.</p>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    La paz no se mantiene sola; requiere de nuestro cuidado, atención y compromiso 
+                    constante para florecer y perdurar.
+                </div>
+            </div>
+        </div>
+
+        <!-- Página 8: Entendiendo la Importancia del Respeto -->
+        <div class="page" id="page-8">
+            <h1 class="page-title">🤝 Entendiendo la Importancia del Respeto</h1>
+            
+            <div class="image-placeholder">
+                <div>👥 Imagen: Estudiantes mostrando respeto mutuo</div>
+            </div>
+
+            <div class="content-section">
+                <p class="text-content">
+                    El respeto es la piedra angular de toda convivencia sana. No se trata simplemente 
+                    de ser educados o corteses, sino de reconocer la dignidad inherente de cada persona 
+                    y actuar en consecuencia. En el contexto escolar, el respeto trasciende las 
+                    diferencias y crea un ambiente donde todos pueden florecer.
+                </p>
+
+                <div class="highlight-box">
+                    <h3 class="highlight-title">💎 El Respeto como Valor Fundamental</h3>
+                    <p>El respeto no es solo una actitud, es una forma de vida que se manifiesta 
+                    en cada palabra, gesto y acción. Es el reconocimiento de que cada persona 
+                    tiene valor y merece ser tratada con dignidad.</p>
+                </div>
+
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">🌟 Dimensiones del Respeto</h3>
+                        <ul class="list-styled">
+                            <li><strong>Respeto hacia uno mismo:</strong> Valorar nuestras propias capacidades y limitaciones</li>
+                            <li><strong>Respeto hacia otros:</strong> Reconocer la dignidad de cada persona</li>
+                            <li><strong>Respeto hacia el entorno:</strong> Cuidar nuestro espacio común</li>
+                            <li><strong>Respeto hacia las normas:</strong> Seguir reglas que benefician a todos</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">🎯 Manifestaciones del Respeto</h3>
+                        <ul class="list-styled">
+                            <li><strong>Escucha activa:</strong> Prestar atención cuando otros hablan</li>
+                            <li><strong>Lenguaje apropiado:</strong> Usar palabras que no hieran ni ofendan</li>
+                            <li><strong>Puntualidad:</strong> Valorar el tiempo propio y ajeno</li>
+                            <li><strong>Empatía:</strong> Ponerse en el lugar del otro</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="image-placeholder">
+                    <div>🔄 Imagen: Círculo del respeto - cómo se multiplica</div>
+                </div>
+
+                <div class="stats-box">
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div><strong>Reciprocidad</strong><br>El respeto se multiplica cuando se practica</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">0</div>
+                        <div><strong>Tolerancia</strong><br>Cero discriminación en nuestra comunidad</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">∞</div>
+                        <div><strong>Impacto</strong><br>Efectos positivos ilimitados</div>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    El respeto es contagioso: cuando respetamos a otros, inspiramos a otros a 
+                    respetarnos a nosotros y a los demás.
+                </div>
+
+                <p class="text-content">
+                    Cuando el respeto se convierte en la norma de nuestra comunidad educativa, 
+                    se crea un ambiente donde todos pueden expresarse libremente, aprender sin 
+                    temor y desarrollar relaciones auténticas y significativas. El respeto no 
+                    solo mejora nuestra convivencia, sino que nos transforma como personas.
+                </p>
+            </div>
+        </div>
+
+        <!-- Página 9: Cómo la Tolerancia Mejora Nuestra Convivencia -->
+        <div class="page" id="page-9">
+            <h1 class="page-title">🌈 Cómo la Tolerancia Mejora Nuestra Convivencia</h1>
+            
+            <div class="image-placeholder">
+                <div>🤝 Imagen: Estudiantes de diferentes orígenes colaborando</div>
+            </div>
+
+            <div class="content-section">
+                <p class="text-content">
+                    La tolerancia es mucho más que simplemente "aguantar" las diferencias de otros. 
+                    Es la capacidad de aceptar, valorar y celebrar la diversidad como una fuente 
+                    de enriquecimiento mutuo. En una comunidad educativa diversa, la tolerancia 
+                    se convierte en el puente que conecta diferentes perspectivas y experiencias.
+                </p>
+
+                <div class="highlight-box">
+                    <h3 class="highlight-title">🔄 De la Tolerancia a la Celebración</h3>
+                    <p>La verdadera tolerancia va más allá de la simple aceptación pasiva. 
+                    Implica un compromiso activo con la comprensión, el aprendizaje mutuo y 
+                    la celebración de la riqueza que aporta la diversidad.</p>
+                </div>
+
+                <div class="two-column">
+                    <div>
+                        <div class="image-placeholder" style="height: 200px;">
+                            <div>🎭 Imagen: Diferentes culturas representadas</div>
+                        </div>
+                        <h4 style="color: #2c3e50; margin: 15px 0;">Diversidad Cultural</h4>
+                        <p>Cada estudiante aporta su herencia cultural única, creando un mosaico 
+                        rico de tradiciones, valores y perspectivas.</p>
+                    </div>
+                    <div>
+                        <div class="image-placeholder" style="height: 200px;">
+                            <div>🧠 Imagen: Diferentes formas de pensar</div>
+                        </div>
+                        <h4 style="color: #2c3e50; margin: 15px 0;">Diversidad de Pensamiento</h4>
+                        <p>Las diferentes formas de pensar y aprender enriquecen el proceso educativo 
+                        y nos ayudan a ver los problemas desde múltiples ángulos.</p>
+                    </div>
+                </div>
+
+                <ul class="list-styled">
+                    <li>
+                        <strong>Beneficios de la Tolerancia:</strong> Cuando practicamos la tolerancia, 
+                        creamos un ambiente donde la creatividad florece, las ideas se intercambian 
+                        libremente y todos se sienten valorados por sus contribuciones únicas.
+                    </li>
+                    <li>
+                        <strong>Superación de Prejuicios:</strong> La tolerancia nos ayuda a superar 
+                        los prejuicios y estereotipos, permitiéndonos conocer a las personas por 
+                        quienes realmente son, no por las ideas preconcebidas que podamos tener.
+                    </li>
+                    <li>
+                        <strong>Desarrollo de Empatía:</strong> Al practicar la tolerancia, desarrollamos 
+                        nuestra capacidad de ponernos en el lugar de otros y comprender sus experiencias 
+                        y perspectivas.
+                    </li>
+                    <li>
+                        <strong>Fortalecimiento de la Comunidad:</strong> Una comunidad tolerante es 
+                        más fuerte, resiliente y capaz de enfrentar desafíos porque puede aprovechar 
+                        la diversidad de talentos y perspectivas de sus miembros.
+                    </li>
+                </ul>
+
+                <div class="stats-box">
+                    <div class="stat-item">
+                        <div class="stat-number">+</div>
+                        <div><strong>Inclusión</strong><br>Más personas se sienten bienvenidas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">×</div>
+                        <div><strong>Creatividad</strong><br>Se multiplican las ideas innovadoras</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">-</div>
+                        <div><strong>Conflictos</strong><br>Disminuyen los malentendidos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">=</div>
+                        <div><strong>Resultado</strong><br>Comunidad más fuerte y unida</div>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    La tolerancia no es debilidad, sino la fuerza que nos permite construir 
+                    puentes donde otros solo ven diferencias.
+                </div>
+
+                <p class="text-content">
+                    Cultivar la tolerancia en nuestra comunidad educativa significa crear un 
+                    espacio donde cada persona puede ser auténtica, donde las diferencias se 
+                    celebran y donde todos pueden contribuir al crecimiento colectivo desde 
+                    su propia perspectiva única.
+                </p>
+            </div>
+        </div>
+
+        <!-- Página 10: Actividades para Practicar la Buena Convivencia -->
+        <div class="page" id="page-10">
+            <h1 class="page-title">🎯 Actividades para Practicar la Buena Convivencia</h1>
+            
+            <div class="image-placeholder">
+                <div>🎨 Imagen: Estudiantes participando en actividades grupales</div>
+            </div>
+
+            <div class="content-section">
+                <p class="text-content">
+                    La teoría sobre convivencia cobra vida cuando la ponemos en práctica a través 
+                    de actividades concretas y significativas. Estas actividades no solo nos 
+                    ayudan a internalizar los valores de respeto y tolerancia, sino que también 
+                    fortalecen los lazos de nuestra comunidad educativa.
+                </p>
+
+                <div class="highlight-box">
+                    <h3 class="highlight-title">🌟 Aprendiendo Haciendo</h3>
+                    <p>Las actividades prácticas nos permiten experimentar directamente los 
+                    beneficios de la buena convivencia y desarrollar habilidades sociales 
+                    que nos servirán toda la vida.</p>
+                </div>
+
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">🎭 Actividades Creativas</h3>
+                        <ul class="list-styled">
+                            <li><strong>Teatro de la Convivencia:</strong> Representar situaciones cotidianas</li>
+                            <li><strong>Murales Colaborativos:</strong> Crear arte que represente la diversidad</li>
+                            <li><strong>Cuentos de Tolerancia:</strong> Escribir historias sobre respeto</li>
+                            <li><strong>Canciones de Paz:</strong> Componer melodías que unan</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">🤝 Actividades Sociales</h3>
+                        <ul class="list-styled">
+                            <li><strong>Círculos de Diálogo:</strong> Espacios para compartir experiencias</li>
+                            <li><strong>Intercambio Cultural:</strong> Conocer diferentes tradiciones</li>
+                            <li><strong>Proyectos Comunitarios:</strong> Trabajar juntos por un objetivo</li>
+                            <li><strong>Mediación entre Pares:</strong> Resolver conflictos constructivamente</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="image-placeholder">
+                    <div>🔄 Imagen: Ciclo de actividades de convivencia</div>
+                </div>
+
+                <div class="stats-box">
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div><strong>Actividades</strong><br>Mensuales programadas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">365</div>
+                        <div><strong>Días</strong><br>De práctica continua</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div><strong>Participación</strong><br>Toda la comunidad involucrada</div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3 class="highlight-title">📅 Calendario de Actividades Sugeridas</h3>
+                    <div class="two-column">
+                        <div>
+                            <h4>Primer Semestre:</h4>
+                            <ul style="list-style: disc; margin-left: 20px;">
+                                <li>Enero: Círculo de Nuevos Propósitos</li>
+                                <li>Febrero: Celebración de la Amistad</li>
+                                <li>Marzo: Feria de Diversidad Cultural</li>
+                                <li>Abril: Semana de la Tolerancia</li>
+                                <li>Mayo: Proyecto Comunitario</li>
+                                <li>Junio: Festival de Talentos</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Segundo Semestre:</h4>
+                            <ul style="list-style: disc; margin-left: 20px;">
+                                <li>Julio: Taller de Comunicación</li>
+                                <li>Agosto: Olimpiadas de Cooperación</li>
+                                <li>Septiembre: Mes del Respeto</li>
+                                <li>Octubre: Campaña Anti-Bullying</li>
+                                <li>Noviembre: Semana de la Gratitud</li>
+                                <li>Diciembre: Celebración de Logros</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    Cada actividad es una oportunidad para crecer juntos, para aprender unos 
+                    de otros y para construir la comunidad que queremos ser.
+                </div>
+
+                <p class="text-content">
+                    La implementación sistemática de estas actividades no solo mejora el clima 
+                    escolar, sino que también prepara a los estudiantes para ser ciudadanos 
+                    responsables y comprometidos con la construcción de una sociedad más justa 
+                    y equitativa. El cambio comienza con cada uno de nosotros, aquí y ahora.
+                </p>
+
+                <div class="authors-section">
+                    <h3 style="text-align: center; margin-bottom: 20px;">✨ Agradecimientos</h3>
+                    <p style="text-align: center;">Esta revista fue posible gracias al trabajo 
+                    colaborativo de:</p>
+                    <div class="authors-grid">
+                        <div class="author-card">
+                            <strong>Sandoval Santisteban, Gisela</strong><br>
+                            <small>Coordinadora Editorial</small>
+                        </div>
+                        <div class="author-card">
+                            <strong>Baldera Bances, Nataly Nicole</strong><br>
+                            <small>Investigación y Contenido</small>
+                        </div>
+                        <div class="author-card">
+                            <strong>Valdera Ventura, Juan Manuel</strong><br>
+                            <small>Diseño y Diagramación</small>
+                        </div>
+                        <div class="author-card">
+                            <strong>More Guevara, Bhins Evis</strong><br>
+                            <small>Revisión y Edición</small>
+                        </div>
+                        <div class="author-card">
+                            <strong>Piscoya Bances, Greysi Antonela</strong><br>
+                            <small>Coordinación General</small>
+                        </div>
+                    </div>
+                    <p style="text-align: center; margin-top: 20px; font-style: italic;">
+                        "Juntos construimos una mejor convivencia"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" onclick="previousPage()" id="prevBtn">← Anterior</button>
+        <button class="nav-btn" onclick="nextPage()" id="nextBtn">Siguiente →</button>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 10;
+
+        function showPage(pageNumber) {
+            // Ocultar todas las páginas
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Mostrar la página actual
+            document.getElementById(`page-${pageNumber}`).classList.add('active');
+            
+            // Actualizar indicador de página
+            document.getElementById('current-page').textContent = pageNumber;
+            
+            // Actualizar botones de navegación
+            document.getElementById('prevBtn').disabled = pageNumber === 1;
+            document.getElementById('nextBtn').disabled = pageNumber === totalPages;
+            
+            // Scroll hacia arriba
+            window.scrollTo(0, 0);
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        }
+
+        function goToPage(pageNumber) {
+            currentPage = pageNumber;
+            showPage(currentPage);
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight') nextPage();
+            if (event.key === 'ArrowLeft') previousPage();
+        });
+
+        // Inicializar
+        showPage(1);
+    </script>
+</body>
+</html>

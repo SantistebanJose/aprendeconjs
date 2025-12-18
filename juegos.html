@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Juegos</title>
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="icon" href="img/logopg.png" type="image/x-icon">
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1261028803938105"
+		crossorigin="anonymous"></script>
+		
+	</head>
+	<body>
+		<!-- Banner de Consentimiento de Cookies -->
+<div id="cookie-consent-banner">
+    <p>Utilizamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra <a href="terminos.html#top-cookies">política de cookies</a>.</p>
+    <button id="accept-cookies">Aceptar</button>
+</div>
+		<header>
+			<div class="container-hero">
+				<div class="container hero">
+					<div class="customer-support">
+                        <i class="fa-solid fa-headset"></i>
+						<div class="content-customer-support">
+							<span class="text">Soporte al cliente</span>
+							<span class="number">+51 916-529-268</span>
+						</div>
+					</div>
+
+					<div class="container-logo">
+						<!-- <i class="fa-solid fa-mug-hot"></i> -->
+						<h1 class="logo"><a href="/">JS</a></h1>
+					</div>
+
+					<div class="container-user">
+						<a href="clase.html" class="classes-link">
+							<i class="fa-solid fa-chalkboard-teacher"></i> <!-- Cambia el ícono según sea necesario -->
+							CLASES VIRTUALES
+						</a>
+						<img src="img/logopg.png" alt="Mi Logo" class="logo-icon"> <!-- Asegúrate de que la ruta sea correcta -->
+						<span class="text"></span>
+							<span class="number"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="container-navbar">
+				<nav class="navbar container">
+					<i class="fa-solid fa-bars"></i>
+					<ul class="menu">
+						<li><a href="index.html">INICIO</a></li>
+						<li><a href="sobremi.html#sobre-mi">SOBRE MI</a></li>
+						<li><a href="codigos.html#proyectos">CÓDIGOS HTML</a></li>
+						<li><a href="proyectos.html#top-products">PROYECTOS</a></li>
+                        <li><a href="recursos.html#juegos" class="active">RECURSOS</a></li>						
+						<li><a href="terminos.html#top-termins">TÉRMINOS Y CONDICIONES</a></li>
+						<li><a href="contacto.html#contacto">CONTÁCTO</a></li>
+					</ul>
+					<div class="navbar-title">
+						<h1>Aprende Con JS</h1>
+					</div>
+
+				 <!--	<form class="search-form">
+						<input type="search" placeholder="Buscar..." />
+						<button class="btn-search">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</button>
+					</form> -->
+				</nav>
+			</div>
+		</header>
+
+		<section class="banner">
+			<div class="content-banner">
+				<br>
+				<br>
+				<br>
+				<p>Aprende sobre Tecnología!</p>
+				<h2>100% Entretenido <br /></h2>
+				<a href="https://www.youtube.com/@AprendeConJS" target="_blank" rel="noopener noreferrer">Inmersos en el mundo del conocimiento.</a>
+			</div>
+		</section>
+		
+
+		<main class="main-content">
+			<br>
+
+			<style scoped>
+				* {
+					margin: 0;
+					padding: 0;
+					box-sizing: border-box;
+					font-family: 'Arial', sans-serif;
+				}
+		
+				.game-container {
+					max-width: 90%;
+					width: 500px;
+					background: linear-gradient(#34c0d6, #d5f3f7);
+					margin: 20px auto;
+					padding: 20px;
+					border-radius: 15px;
+					box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				}
+		
+				h2 {
+					text-align: center;
+					color: #333;
+					margin-bottom: 20px;
+					font-size: clamp(1.5rem, 4vw, 2rem);
+				}
+		
+				.container-operadores {
+					display: flex;
+					justify-content: center;
+					gap: 15px;
+					flex-wrap: wrap;
+					margin-bottom: 20px;
+				}
+		
+				.container-operadores button {
+					width: clamp(50px, 15vw, 60px);
+					height: clamp(50px, 15vw, 60px);
+					border: none;
+					border-radius: 50%;
+					border: 1px solid black;
+					cursor: pointer;
+					transition: .3s;
+					font-size: clamp(1.2rem, 4vw, 1.5rem);
+					background: white;
+				}
+		
+				.container-operadores button:hover {
+					transform: scale(1.1);
+				}
+		
+				.container-operadores .activado {
+					background-color: rgb(61, 118, 198);
+					color: white;
+					transform: scale(1.1);
+				}
+		
+				.container-operacion {
+					background-color: white;
+					margin: 20px auto;
+					padding: 15px;
+					border-radius: 10px;
+					box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+					text-align: center;
+					font-size: clamp(1.5rem, 5vw, 2.5rem);
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					flex-wrap: wrap;
+					gap: 10px;
+				}
+		
+				.container-operacion input {
+					width: clamp(70px, 20vw, 100px);
+					font-size: clamp(1.5rem, 5vw, 2.5rem);
+					border: none;
+					border-bottom: 2px solid #34c0d6;
+					text-align: center;
+					outline: none;
+					padding: 5px;
+				}
+		
+				#corregir {
+					display: block;
+					margin: 20px auto;
+					padding: 10px 20px;
+					font-size: clamp(1rem, 3vw, 1.2rem);
+					background-color: white;
+					border: 1px solid #333;
+					border-radius: 5px;
+					cursor: pointer;
+					transition: .3s;
+				}
+		
+				#corregir:hover {
+					transform: scale(1.1);
+				}
+		
+				#msj_correccion {
+					text-align: left;
+					min-height: 40px;
+					padding: 10px;
+					display: flex;
+					flex-wrap: wrap;
+					gap: 5px;
+				}
+		
+				#msj_correccion i {
+					font-size: clamp(1.5rem, 5vw, 2rem);
+					display: inline-block;
+				}
+		
+				.emoji {
+					animation: zoom 0.9s forwards;
+					font-size: clamp(2rem, 7vw, 3rem); /* Emojis más grandes */
+					display: inline-block;
+				}
+				.emoji-correcto {
+					color: rgb(103, 82, 241);
+				}
+		
+				.emoji-incorrecto {
+					color: red;
+				}
+		
+				@keyframes zoom {
+					from { transform: scale(0); }
+					to { transform: scale(1); }
+				}
+		
+				@media (max-width: 480px) {
+					.game-container {
+						padding: 15px;
+						margin: 10px auto;
+					}
+		
+					.container-operacion {
+						padding: 10px;
+					}
+				}
+			</style>
+		</head>
+		<body>
+			<h1 style="text-align: center;">Juego Matemático</h1>
+
+			<div class="game-container">
+				<h2>Ejercicios de Matemáticas</h2>
+				
+				<div class="container-operadores">
+					<button onclick="btnSumar()" id="suma">+</button>
+					<button onclick="btnResta()" id="resta">-</button>
+					<button onclick="btnProducto()" id="producto">×</button>
+					<button onclick="btnDivision()" id="division">÷</button>
+				</div>
+		
+				<div class="container-operacion">
+					<span id="num1">0</span>
+					<span id="operacion"></span>
+					<span id="num2">0</span>
+					<span>=</span>
+					<input type="text" inputmode="numeric" id="respuesta_usuario">
+				</div>
+		
+				<button id="corregir" onclick="corregir()">Corregir</button>
+				<div id="msj_correccion"></div>
+			</div>
+		
+			<script>
+				let num1 = document.querySelector("#num1");
+				let num2 = document.querySelector("#num2");
+				let respuesta_usuario = document.querySelector("#respuesta_usuario");
+				let msj_correccion = document.querySelector("#msj_correccion");
+				let operacion = document.querySelector("#operacion");
+				let operacion_actual;
+				let n1, n2;
+		
+				function btnSumar() {
+					activarBoton("suma");
+					operacion_actual = "+";
+					operacion.innerHTML = " + ";
+					nuevaSuma();
+				}
+		
+				function nuevaSuma() {
+					n1 = parseInt(Math.random() * 10);
+					n2 = parseInt(Math.random() * 10);
+					num1.innerHTML = n1;
+					num2.innerHTML = n2;
+					respuesta_usuario.focus();
+				}
+		
+				function btnProducto() {
+					activarBoton("producto");
+					operacion_actual = "*";
+					operacion.innerHTML = " × ";
+					nuevoProducto();
+				}
+		
+				function nuevoProducto() {
+					n1 = parseInt(Math.random() * 10);
+					n2 = parseInt(Math.random() * 10);
+					num1.innerHTML = n1;
+					num2.innerHTML = n2;
+					respuesta_usuario.focus();
+				}
+		
+				function btnResta() {
+					activarBoton("resta");
+					operacion_actual = "-";
+					operacion.innerHTML = " - ";
+					nuevaResta();
+				}
+		
+				function nuevaResta() {
+					n1 = parseInt(Math.random() * 5 + 5);
+					n2 = parseInt(Math.random() * 5);
+					num1.innerHTML = n1;
+					num2.innerHTML = n2;
+					respuesta_usuario.focus();
+				}
+		
+				function btnDivision() {
+					activarBoton("division");
+					operacion_actual = "/";
+					operacion.innerHTML = " ÷ ";
+					nuevaDivision();
+				}
+		
+				function nuevaDivision() {
+					let divisores = [];
+					n1 = parseInt(Math.random() * 9 + 1);
+		
+					for (let i = 1; i <= n1; i++) {
+						if (n1 % i === 0) {
+							divisores.push(i);
+						}
+					}
+		
+					let pos = parseInt(Math.random() * (divisores.length));
+					n2 = divisores[pos];
+					num1.innerHTML = n1;
+					num2.innerHTML = n2;
+					respuesta_usuario.focus();
+				}
+		
+				function corregir() {
+					if (respuesta_usuario.value === "") return;
+		
+					let solucion;
+					let operacionStr = n1 + operacion_actual + n2;
+					solucion = eval(operacionStr);
+		
+					const span = document.createElement('span');
+					span.className = 'emoji ' + (respuesta_usuario.value == solucion ? 'emoji-correcto' : 'emoji-incorrecto');
+					span.textContent = respuesta_usuario.value == solucion ? '😊' : '😢';
+					msj_correccion.appendChild(span);
+		
+					if (operacion_actual === "+") nuevaSuma();
+					else if (operacion_actual === "-") nuevaResta();
+					else if (operacion_actual === "*") nuevoProducto();
+					else if (operacion_actual === "/") nuevaDivision();
+		
+					respuesta_usuario.value = "";
+				}
+		
+				respuesta_usuario.addEventListener('keypress', function(e) {
+					if (e.key === 'Enter') corregir();
+				});
+		
+				function activarBoton(idBoton) {
+					document.getElementById("suma").className = "";
+					document.getElementById("resta").className = "";
+					document.getElementById("producto").className = "";
+					document.getElementById("division").className = "";
+					document.getElementById(idBoton).className = "activado";
+				}
+		
+				window.onload = btnSumar;
+			</script>
+
+		<div id="blog-detail" style="display: none; position: relative;">
+			<div id="detail-content" class="detail-content"></div>
+			<div style="text-align: center; margin: 20px 0;">
+				<button id="btn-back">Regresar</button>
+			</div>
+		</div>
+                
+    		<section class="container top-products">
+				<h1 class="heading-1">Últimos Blogs</h1>
+			
+				<div class="container-blogs" id="blog-list">
+					<!-- Blog 1 -->
+					<div class="card-blog" data-id="blog1">
+						<div class="container-img">
+							<img src="img/libro1.jpg" alt="Imagen Blog 1" />
+							<div class="button-group-blog">
+								<span><i class="fa-solid fa-magnifying-glass"></i></span>
+								<span><i class="fa-solid fa-link"></i></span>
+							</div>
+						</div>
+						<div class="content-blog">
+							<h3>Análisis Matemático y su Importancia Actual</h3>
+							<span>29 Noviembre 2022</span>
+							<div class="blog-content">
+								<p class="initial-content">
+									La obra "Análisis Matemático" de Eduardo Espinoza Ramos no solo cubre los fundamentos
+									teóricos del análisis matemático, sino que también proporciona herramientas prácticas 
+									esenciales para disciplinas como la ingeniería, las ciencias físicas y la economía.
+								</p>
+								<div class="full-content" style="display: none">
+									<p>
+										En sus cuatro tomos, aborda temas que van desde los números reales y funciones hasta el
+										cálculo diferencial e integral. En un mundo donde los algoritmos matemáticos impulsan 
+										tecnologías como la inteligencia artificial, estos conocimientos se han vuelto 
+										indispensables.
+									</p>
+									<p>
+										En particular, el tomo IV incluye aplicaciones prácticas en optimización y 
+										modelado, fundamentales en el desarrollo de sistemas inteligentes. Además, 
+										el enfoque pedagógico de Espinoza Ramos facilita la comprensión de conceptos 
+										complejos, haciendo de esta obra un recurso imprescindible tanto para estudiantes 
+										como para profesionales.
+									</p>
+								</div>
+							</div>
+							<div class="btn-read-more" >
+								<a href="blogs.html?blog=1" class="no-underline" >Leer más</a>
+							</div>
+						</div>
+					</div>
+	
+					<!-- Blog 2 -->
+					<div class="card-blog" data-id="blog2">
+						<div class="container-img">
+							<img src="img/blog-3.jpeg" alt="Imagen Blog 2" />
+							<div class="button-group-blog">
+								<span><i class="fa-solid fa-magnifying-glass"></i></span>
+								<span><i class="fa-solid fa-link"></i></span>
+							</div>
+						</div>
+						<div class="content-blog">
+							<h3>El Impacto de la Inteligencia Artificial en 2024</h3>
+							<span>29 Noviembre 2022</span>
+							<div class="blog-content">
+								<p class="initial-content">
+									La inteligencia artificial (IA) está transformando diversas industrias. Este año, 
+									tecnologías avanzadas como los modelos generativos han demostrado su potencial en 
+									campos como la creatividad digital y la productividad empresarial.
+								</p>
+								<div class="full-content" style="display: none">
+									<p>
+										Por ejemplo, herramientas como GPT-4 y DALL-E están permitiendo a los usuarios 
+										generar contenido de alta calidad con mayor facilidad. Además, sectores como la 
+										salud y la educación han visto un incremento en el uso de la IA para mejorar procesos.
+									</p>
+									<p>
+										En salud, sistemas de diagnóstico asistidos por IA han reducido tiempos de espera 
+										y mejorado la precisión en tratamientos. Mientras tanto, en educación, plataformas 
+										adaptativas están personalizando la experiencia de aprendizaje.
+									</p>
+									<p>
+										Sin embargo, este crecimiento también plantea desafíos éticos y de privacidad que 
+										deben ser abordados por regulaciones sólidas y una discusión global sobre el uso 
+										responsable de estas tecnologías.
+									</p>
+								</div>
+							</div>
+							<!-- <button class="btn-read-more" data-action="expand">Leer más</button> -->
+							<div class="btn-read-more" >
+								<a href="blogs.html?blog=2" class="no-underline" >Leer más</a>
+							</div>
+						</div>
+					</div>
+	
+					<!-- Blog 3 -->
+					<div class="card-blog" data-id="blog3">
+						<div class="container-img">
+							<img src="img/blog-2.png" alt="Imagen Blog 3" />
+							<div class="button-group-blog">
+								<span><i class="fa-solid fa-magnifying-glass"></i></span>
+								<span><i class="fa-solid fa-link"></i></span>
+							</div>
+						</div>
+						<div class="content-blog">
+							<h3>Tecnologías Emergentes en el Desarrollo Web</h3>
+							<span>29 Noviembre 2022</span>
+							<div class="blog-content">
+								<p class="initial-content">
+									En el ámbito del desarrollo web, las tecnologías emergentes están marcando tendencias 
+									clave. Frameworks como React, Angular y Vue continúan dominando, ofreciendo a los 
+									desarrolladores herramientas para crear interfaces más dinámicas y eficientes.
+								</p>
+								<div class="full-content" style="display: none">
+									<p>
+										Además, los lenguajes TypeScript y Rust están ganando popularidad debido a su 
+										capacidad para manejar aplicaciones a gran escala. Otra innovación notable es la 
+										integración de tecnologías de Web3, como blockchain, en aplicaciones descentralizadas.
+									</p>
+									<p>
+										Estas soluciones están cambiando la manera en que los usuarios interactúan con la web, 
+										promoviendo una mayor privacidad y seguridad de datos. Asimismo, el diseño responsive 
+										y el uso de Progressive Web Apps (PWA) han pasado a ser estándares esenciales.
+									</p>
+									<p>
+										Estas tendencias subrayan la importancia de mantenerse actualizado en un campo en 
+										constante evolución, donde la innovación y la adaptabilidad son clave para el éxito.
+									</p>
+								</div>
+							</div>
+							<div class="btn-read-more" >
+								<a href="blogs.html?blog=3" class="no-underline" >Leer más</a>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+	
+				<div id="blog-detail" style="display: none; position: relative;">
+					<div id="detail-content" class="detail-content"></div>
+					<div style="text-align: center; margin: 20px 0;">
+						<button id="btn-back">Regresar</button>
+					</div>
+				</div>
+				
+			</section>
+		</main>
+
+		<footer class="footer">
+			<div class="container container-footer">
+				<div class="menu-footer">
+					<div class="contact-info">
+						<p class="title-footer">Información de Contacto</p>
+						<ul>
+							<li>Teléfono: +51 916-529-268</li>
+							<li>EmaiL: josesantistebancasusol@gmail.com</li>
+						</ul>
+						<div class="social-icons">
+							<span class="facebook">
+								<a href="https://www.facebook.com/AprendeConJS" target="_blank" rel="noopener noreferrer">
+									<i class="fa-brands fa-facebook-f"></i>
+								</a>
+							</span>
+							
+							<span class="youtube">
+								<a href="https://www.youtube.com/@AprendeConJS" target="_blank" rel="noopener noreferrer">
+									<i class="fa-brands fa-youtube"></i>
+								</a>
+							</span>
+							
+							<span class="instagram">
+								<a href="https://www.instagram.com/jose._.sc/" target="_blank" rel="noopener noreferrer">
+									<i class="fa-brands fa-instagram"></i>
+								</a>
+							</span>
+
+							<span class="tiktok">
+								<a href="https://www.tiktok.com/@jose._.santisteban" target="_blank" rel="noopener noreferrer">
+									<i class="fa-brands fa-tiktok"></i>
+								</a>
+							</span>
+
+							<span class="whatsapp ">
+								<a href="https://whatsapp.com/channel/0029Va6ULLfKWEKjrV09g62o" target="_blank" rel="noopener noreferrer">
+									<i class="fa-brands fa-whatsapp"></i>
+								</a>
+							</span>
+						</div>
+						
+					</div>
+
+					<div class="information">
+						<p class="title-footer">Información</p>
+						<ul>
+							<li><a href="sobremi.html#sobre-mi">Acerca de Nosotros</a></li>
+							<li><a href="contacto.html#contacto">Contactános</a></li>
+						</ul>
+					</div>
+
+					<div class="my-account">
+						<p class="title-footer">Manejo de Datos</p>
+
+						<ul>
+							<li><a href="terminos.html#top-politics">Politicas de Privacidad</a></li>
+							<li><a href="terminos.html#top-termins">Términos y condiciones</a></li>
+							<li><a href="terminos.html#top-cookies">Políticas de Cookies</a></li>
+
+						</ul>
+					</div>
+
+					<div class="information">
+						<p class="title-footer">Dirección</p>
+						<ul>
+							<li>
+								Dirección: Ca. Calle N°1, Curva Tranca Sasape, Mórrope, Lambayeque.
+							</li>
+						</ul>
+					</div>
+
+				<!--	<div class="newsletter">
+						<p class="title-footer">Dirección</p>
+
+						<div class="content">
+							<li>
+								Dirección: Ca. Calle N°1, Curva Tranca Sasape, Mórrope, Lambayeque.
+							</li>
+							<input type="email" placeholder="Ingresa el correo aquí...">
+							<button>Suscríbete</button>
+						</div>
+					</div> -->
+				</div>
+
+				<div class="copyright">
+					<p>
+						Desarrollado por José Santisteban Casusol &copy; 2024
+					</p>
+
+					<img src="img/payment.png" alt="Pagos">
+				</div>
+			</div>
+		</footer>
+
+		<script src="https://kit.fontawesome.com/5f3b5b42d8.js" crossorigin="anonymous"></script>
+
+		<script src="menu.js"></script>
+		
+
+
+		<script>
+			// Función para aceptar cookies
+			document.getElementById('accept-cookies').onclick = function() {
+				document.cookie = "cookies_accepted=true; max-age=" + 60*60*24*30; // 30 días
+				document.getElementById('cookie-consent-banner').style.display = 'none';
+			};
+		
+			// Comprobar si la cookie ya fue aceptada
+			if (document.cookie.split(';').some((item) => item.trim().startsWith('cookies_accepted='))) {
+				document.getElementById('cookie-consent-banner').style.display = 'none';
+			} else {
+				// Si no se ha aceptado, mostrar el banner
+				document.getElementById('cookie-consent-banner').style.display = 'block';
+			}
+		</script>
+
+	</body>
+</html>

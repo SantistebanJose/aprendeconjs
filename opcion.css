@@ -1,0 +1,127 @@
+
+/* ********************************** */
+/*               SOBRE MI             */
+/* ********************************** */
+.sobre-mi {
+    padding: 4rem 2rem; /* Añadido padding lateral */
+    background-color: var(--background-color);
+}
+
+.sobre-mi-content {
+    display: flex;
+    align-items: flex-start; /* Alinea el texto y la imagen al inicio */
+    justify-content: flex-start; /* Alinea todo a la izquierda */
+    gap: 2rem;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.about-text {
+    max-width: 600px; /* Ajusta el ancho del texto */
+    padding-right: 2rem; /* Espacio entre el texto y la imagen */
+    text-align: justify; /* Justifica el texto */
+}
+
+.about-text h2 {
+    font-size: 2.5rem; /* Tamaño de fuente para el título principal */
+    color: var(--dark-color); /* Color oscuro */
+    margin-bottom: 1rem; /* Espaciado inferior */
+}
+
+.about-text h3 {
+    font-size: 2rem; /* Tamaño de fuente para los encabezados */
+    margin-top: 1.5rem; /* Espaciado superior */
+    color: var(--dark-color); /* Color oscuro */
+}
+
+.about-text p {
+    font-size: 1.6rem; /* Tamaño de fuente para párrafos */
+    color: #555; /* Color del texto */
+    line-height: 1.6; /* Espaciado entre líneas */
+    margin-bottom: 1rem; /* Espaciado inferior */
+    text-align: justify; /* Justificar el texto */
+}
+
+.profile-photo img {
+    border-radius: 10px; /* Bordes redondeados */
+    height: auto; /* Mantiene la proporción de la imagen */
+    max-height: 800px; /* Ajusta la altura máxima según sea necesario */
+    width: auto; /* Mantiene el ancho automático */
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+	float: right;
+}
+
+/* ********************************** */
+/*               MEDIA QUERIES        */
+/* ********************************** */
+@media (max-width: 768px) {
+    .sobre-mi-content {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+        align-items: center; /* Centra los elementos */
+    }
+
+    .profile-photo img {
+        width: 80%; /* Ajusta el tamaño de la imagen en pantallas pequeñas */
+        max-width: 200px; /* Limita el tamaño máximo de la imagen */
+    }
+
+    .about-text {
+        text-align: left; /* Alinea el texto a la izquierda en móviles */
+        padding-right: 0; /* Elimina el padding derecho en móviles */
+    }
+}
+
+
+/*** separa tu clase */
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Asegura que ambos elementos tengan la misma altura */
+    margin-top: 20px;
+}
+
+.image-container {
+    flex: 1; /* Toma el espacio restante */
+    text-align: center; /* Centra la imagen */
+}
+
+.image-container img {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    height: 100%; /* Mantiene la proporción de la imagen */
+    max-height: 400px; /* Limita la altura máxima de la imagen en escritorio */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+.contact-form {
+    flex: 1; /* Toma el espacio restante */
+    margin-left: 20px; /* Espacio entre la imagen y el formulario */
+}
+/* Efecto hover en el botón */
+.contact-form button:hover {
+    background-color: #c89a7a;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+        align-items: center; /* Centra los elementos */
+    }
+
+    .image-container {
+        margin-bottom: 20px; /* Espacio inferior en móviles */
+        width: 100%; /* Asegura que la imagen ocupe el ancho completo */
+    }
+
+    .image-container img {
+        max-height: 100%; /* Limita la altura máxima de la imagen en móviles */
+        width: 100%; /* Asegura que la imagen ocupe el ancho completo */
+    }
+
+    .contact-form {
+        width: 100%; /* Asegura que el formulario ocupe el ancho completo */
+        margin-left: 0; /* Elimina el margen en móviles */
+        border: 1px solid #d9b89b; /* Añade un borde al formulario */
+        padding: 10px; /* Espaciado interno del formulario */
+        border-radius: 8px; /* Bordes redondeados */
+    }
+}

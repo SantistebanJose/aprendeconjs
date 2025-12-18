@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matemáticas por Grado | Recursos Interactivos</title>
+    <meta name="description" content="Aprende matemáticas con recursos interactivos para estudiantes de preescolar, primaria y secundaria. Videos educativos, cuestionarios y exámenes para cada grado.">
+    <meta name="keywords" content="matemáticas, aprendizaje interactivo, primaria, secundaria, preescolar, cuestionarios, videos educativos, educación">
+    <meta name="author" content="Aprende Con JS">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="maths.css" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1261028803938105"
+     crossorigin="anonymous"></script>
+        <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+
+     <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <h1>Matemáticas por Grado</h1>
+    </header>
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Resumen de curso</h2>
+            <button onclick="showGrade('preescolar')">Preescolar a 1º grado</button>
+            <button onclick="showGrade('grado2')">2º Primaria</button>
+            <button onclick="showGrade('grado3')">3º Primaria</button>
+            <button onclick="showGrade('grado4')">4º Primaria</button>
+            <button onclick="showGrade('grado5')">5º Primaria</button>
+            <button onclick="showGrade('grado6')">6º Primaria</button>
+            <button onclick="showGrade('secundaria1')">1º Secundaria</button>
+            <button onclick="showGrade('secundaria2')">2º Secundaria</button>
+            <button onclick="showGrade('secundaria3')">3º Secundaria</button>
+            <button onclick="showGrade('secundaria4')">4º Secundaria</button>
+            <button onclick="showGrade('secundaria5')">5º Secundaria</button>
+            <button onclick="window.location.href='index.html';" class="exit-button">Salir</button>
+        </aside>
+
+        <!-- Contenido principal -->
+        <section class="content" id="content">
+            <div class="welcome-container">
+                <div class="welcome-text">
+                    <h2>¡Bienvenido a Matemáticas por Grado!</h2>
+                    <p>
+                        Estamos emocionados de acompañarte en este emocionante viaje para aprender matemáticas. Aquí encontrarás recursos interactivos, cuestionarios dinámicos y contenido diseñado para cada nivel educativo, desde preescolar hasta secundaria. ¡Comienza seleccionando
+                        tu grado en la barra lateral y prepárate para explorar, aprender y divertirte!
+                    </p>
+                    <p>
+                        La práctica hace al maestro, y nosotros te ayudaremos a convertirte en un experto. ¡Vamos juntos hacia el éxito en matemáticas!
+                    </p>
+                </div>
+                <img src="img/maths.png" alt="Bienvenido a Matemáticas por Grado" class="welcome-image">
+            </div>
+        </section>
+    </div>
+
+    <script>
+        let currentGrade = null;
+        let currentTopic = null;
+        const completedTopics = {};
+        const quizStates = {};
+
+        const grades = {
+            // GRADO PREESCOLAR - 1° PRIMARIA//
+            preescolar: {
+                title: "Preescolar a 1º grado",
+                topics: [{
+                        title: "Contar",
+                        content: {
+                            title: "Unidad 1: Aprende a contar",
+                            description: "Aprenderemos a contar objetos y reconocer números del 1 al 10.",
+                            videos: [{
+                                title: "Introducción a los números",
+                                url: "https://www.youtube.com/embed/ifIrWXKMjns"
+                            }],
+
+                            quiz: {
+                                questions: [{
+                                    question: "¿Cuántas manzanas hay en la imagen?",
+                                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXMYORffxaCHKu5WTOoUGG3cf68hzZa974LQ&s",
+                                    options: ["3", "5", "7"],
+                                    correct: 1,
+                                    feedback: "¡Muy bien! Hay 5 manzanas en la imagen."
+                                }, {
+                                    question: "¿Cuántos lápices puedes contar?",
+                                    image: "https://us.123rf.com/450wm/milanpetrovic/milanpetrovic1411/milanpetrovic141100910/33527028-l%C3%A1piz-de-madera-en-ocho-colores-ilustraci%C3%B3n-vectorial.jpg",
+                                    options: ["4", "6", "8"],
+                                    correct: 2,
+                                    feedback: "¡Correcto! Hay 8 lápices."
+                                }, {
+                                    question: "¿Cuántas estrellas ves?",
+                                    image: "https://static.vecteezy.com/system/resources/thumbnails/003/355/389/small/five-5-star-rank-sign-illustration-free-vector.jpg",
+                                    options: ["5", "6", "7"],
+                                    correct: 0,
+                                    feedback: "¡Excelente! Hay 5 estrellas."
+                                }]
+                            }
+                        }
+
+
+                    },
+                    // Aquí agregas el nuevo tema medidas y tamaño
+                    {
+                        title: "Medidas y tamaños",
+                        content: {
+                            title: "Unidad 2: Aprende a medir",
+                            description: "¿Pequeño o grande? ¿cuánto mide? Las cosas tienen tamaño y podemos medir algunas.",
+                            videos: [{
+                                title: "Ordenar por longitud",
+                                url: "https://www.youtube.com/embed/c_xv4orhaMI"
+                            }, {
+                                title: "Medir longitud: estatua dorada",
+                                url: "https://www.youtube.com/embed/ej2L91DKDL0"
+                            }],
+                            quiz: {
+                                questions: [{
+                                    question: "¿Cuál es más grande? Escoge uno:",
+                                    image: "img/tamaño1.png",
+                                    options: ["A", "B"],
+                                    correct: 1,
+                                    feedback: "¡Muy bien! la opción B es más grande."
+                                }, {
+                                    question: "¿Cuánto es 1 + 3?",
+                                    options: ["2", "3", "4"],
+                                    correct: 2,
+                                    feedback: "¡Correcto! 1 + 3 es igual a 4."
+                                }]
+                            }
+
+                        }
+                    },
+                    // Aquí agregas el nuevo tema unidades y decenas"
+                    {
+                        title: "Unidades y decenas",
+                        content: {
+                            title: "Unidad 3: Aprende a contar unidades y decenas ",
+                            description: "Vamos a contar con más números que los dedos de tus manos.",
+                            videos: [{
+                                title: "Números del 10 al 19 como sumas con 10",
+                                url: "https://cdn.kastatic.org/ka-youtube-converted/DP0EUIQOBx8.mp4/DP0EUIQOBx8.mp4#t=0"
+                            }, {
+                                title: "Números del 10 al 19: monos",
+                                url: "https://cdn.kastatic.org/ka-youtube-converted/EIstkFmnp78.mp4/EIstkFmnp78.mp4#t=0"
+                            }],
+                            quiz: {
+                                questions: [{
+                                    question: "10 + 5 = _____",
+                                    image: "img/picachuContar.png",
+                                    options: ["13", "14", "15"],
+                                    correct: 2,
+                                    feedback: "¡Muy bien! la suma es igual a 15."
+                                }, {
+                                    question: "¿Cuál grupo tiene 15 flores? Escoge 1 respuesta:",
+                                    image: "img/floresconteo.png",
+                                    options: ["A", "B", "C"],
+                                    correct: 2,
+                                    feedback: "¡Correcto! La alternativa C tiene 15 flores."
+                                }, {
+                                    question: "Aquí hay 10 ponis:",
+                                    image: "https://cdn.kastatic.org/ka-perseus-graphie/eac16d0f58f9f30a2b8f2735c5b3665b125f6cfa.png",
+                                    question: "Queremos 17 ponis. Necesitamos ____ ponis.",
+                                    options: ["5", "8", "7"],
+                                    correct: 2,
+                                    feedback: "¡Correcto! Necesitamos 7 ponis más."
+                                }]
+                            }
+
+                        }
+                    },
+
+                    // Aquí agregas el nuevo tema Comparar números"
+                    {
+                        title: "Comparar números",
+                        content: {
+                            title: "Unidad 4: Aprende a comparar números",
+                            description: "Hay números más grandes o más pequeños que otros.",
+                            videos: [{
+                                title: "Comparar números de objetos",
+                                url: "https://cdn.kastatic.org/ka-youtube-converted/V94Po5OpUDo.mp4/V94Po5OpUDo.mp4#t=0"
+                            }, {
+                                title: "Comparar números en la recta numérica",
+                                url: "https://www.youtube.com/embed/xpN-wvSwKdM"
+                            }, {
+                                title: "Contar por categoría",
+                                url: "https://www.youtube.com/embed/94IaEV2z1iM"
+                            }],
+                            quiz: {
+                                questions: [{
+                                    question: "¿Quién tiene menos monos? Escoge 1 respuesta:",
+                                    image: "img/monos.png",
+                                    options: ["Jon", "Ping"],
+                                    correct: 0,
+                                    feedback: "¡Muy bien! Jon tiene menos monos."
+                                }, {
+                                    question: "¿Cuál número es menor? Escoge 1 respuesta:",
+                                    options: ["2", "6"],
+                                    correct: 0,
+                                    feedback: "¡Correcto! el 2 es menos."
+                                }, {
+                                    question: "El número 3 es ____",
+                                    options: ["Menor que 6", "Mayor que 6"],
+                                    correct: 0,
+                                    feedback: "¡Correcto! el 3 es menor que 6."
+                                }, {
+                                    question: "¿Qué figura geométrica tiene menor cantidad?",
+                                    image: "img/figurageometricas.png",
+                                    options: ["Rectángulo", "Triángulo", "Círculo"],
+                                    correct: 0,
+                                    feedback: "¡Correcto! hay menos rectángulos."
+                                }, ]
+                            }
+
+                        }
+                    },
+
+
+
+
+                ]
+            },
+            grado2: {
+                title: "2º Primaria",
+                topics: [{
+                        title: "Sumas y restas hasta 100",
+                        content: {
+                            title: "Unidad 1: Operaciones básicas",
+                            description: "Aprenderemos a sumar y restar números hasta 100.",
+                            videos: [{
+                                title: "Ordenar por longitud",
+                                url: "https://www.youtube.com/embed/c_xv4orhaMI"
+                            }, {
+                                title: "Contemos juntos del 1 al 10",
+                                url: "https://www.youtube.com/embed/anotherVideoUrl"
+                            }, {
+                                title: "Contemos juntos del 1 al 10",
+                                url: "https://www.youtube.com/embed/yetAnotherVideoUrl"
+                            }],
+                            quiz: {
+                                questions: [{
+                                    question: "¿Cuánto es 25 + 13?",
+                                    options: ["35", "38", "40"],
+                                    correct: 1,
+                                    feedback: "¡Correcto! 25 + 13 = 38"
+                                }, {
+                                    question: "¿Cuánto es 50 - 24?",
+                                    options: ["24", "26", "28"],
+                                    correct: 1,
+                                    feedback: "¡Exacto! 50 - 24 = 26"
+                                }, {
+                                    question: "¿Cuánto es 50 - 24?",
+                                    options: ["24", "26", "28"],
+                                    correct: 1,
+                                    feedback: "¡Exacto! 50 - 24 = 26"
+                                }]
+                            }
+                        }
+                    }, {
+                        title: "Sumas y restas hasta 100",
+                        content: {
+                            title: "Unidad 1: Operaciones básicas",
+                            description: "Aprenderemos a sumar y restar números hasta 100.",
+                            videos: [{
+                                title: "Ordenar por longitud",
+                                url: "https://www.youtube.com/embed/c_xv4orhaMI"
+                            }, {
+                                title: "Contemos juntos del 1 al 10",
+                                url: "https://www.youtube.com/embed/anotherVideoUrl"
+                            }, {
+                                title: "Contemos juntos del 1 al 10",
+                                url: "https://www.youtube.com/embed/yetAnotherVideoUrl"
+                            }],
+                            quiz: {
+                                questions: [{
+                                    question: "¿Cuánto es 25 + 13?",
+                                    options: ["35", "38", "40"],
+                                    correct: 1,
+                                    feedback: "¡Correcto! 25 + 13 = 38"
+                                }, {
+                                    question: "¿Cuánto es 50 - 24?",
+                                    options: ["24", "26", "28"],
+                                    correct: 1,
+                                    feedback: "¡Exacto! 50 - 24 = 26"
+                                }]
+                            }
+                        }
+                    }, {
+                        title: "Sumas y restas hasta 100",
+                        content: {
+                            title: "Unidad 1: Operaciones básicas",
+                            description: "Aprenderemos a sumar y restar números hasta 100.",
+                            videos: [{
+                                title: "Ordenar por longitud",
+                                url: "https://www.youtube.com/embed/c_xv4orhaMI"
+                            }, {
+                                title: "Contemos juntos del 1 al 10",
+                                url: "https://www.youtube.com/embed/anotherVideoUrl"
+                            }, {
+                                title: "Contemos juntos del 1 al 10",
+                                url: "https://www.youtube.com/embed/yetAnotherVideoUrl"
+                            }],
+                            quiz: {
+                                questions: [{
+                                    question: "¿Cuánto es 25 + 13?",
+                                    options: ["35", "38", "40"],
+                                    correct: 1,
+                                    feedback: "¡Correcto! 25 + 13 = 38"
+                                }, {
+                                    question: "¿Cuánto es 50 - 24?",
+                                    options: ["24", "26", "28"],
+                                    correct: 1,
+                                    feedback: "¡Exacto! 50 - 24 = 26"
+                                }]
+                            }
+                        }
+                    },
+
+                ]
+            }
+        };
+
+
+
+
+        // examens finales segun el grado y temas completados //
+        // Primero, agregamos la estructura de datos para los exámenes finales
+        const finalExams = {
+            preescolar: {
+                questions: [{
+                        question: "¿Cuántas manzanas hay en total?",
+                        image: "https://example.com/apples.jpg",
+                        options: ["8", "9", "10", "11"],
+                        correct: 2,
+                        feedback: "¡Correcto! Hay 10 manzanas en total."
+                    }, {
+                        question: "¿Qué número es mayor?",
+                        options: ["5", "3", "2", "4"],
+                        correct: 0,
+                        feedback: "¡Muy bien! 5 es el número mayor."
+                    }, {
+                        question: "¿Cuál es el objeto más largo?",
+                        image: "https://example.com/objects.jpg",
+                        options: ["Lápiz", "Regla", "Crayón", "Borrador"],
+                        correct: 1,
+                        feedback: "¡Correcto! La regla es el objeto más largo."
+                    },
+                    // ... más preguntas específicas para preescolar
+                ]
+            },
+            grado2: {
+                questions: [{
+                        question: "¿Cuánto es 25 + 18?",
+                        options: ["42", "43", "44", "45"],
+                        correct: 1,
+                        feedback: "¡Correcto! 25 + 18 = 43"
+                    }, {
+                        question: "Si tengo 50 canicas y pierdo 13, ¿cuántas me quedan?",
+                        options: ["35", "36", "37", "38"],
+                        correct: 2,
+                        feedback: "¡Exacto! 50 - 13 = 37 canicas"
+                    },
+                    // ... más preguntas específicas para segundo grado
+                ]
+            }
+            // ... estructura similar para otros grados
+        };
+
+        // Estado del examen final
+        let finalExamState = {
+            currentQuestion: 0,
+            correctAnswers: 0,
+            answeredQuestions: new Set(),
+            totalQuestions: 0
+        };
+
+        // Función para iniciar el examen final
+        function startFinalExam() {
+            const examQuestions = finalExams[currentGrade].questions;
+            finalExamState = {
+                currentQuestion: 0,
+                correctAnswers: 0,
+                answeredQuestions: new Set(),
+                totalQuestions: examQuestions.length
+            };
+
+            const contentDiv = document.getElementById("content");
+            contentDiv.innerHTML = `
+        <div class="final-exam-container">
+            <h2>Examen Final - ${grades[currentGrade].title}</h2>
+            <div class="quiz-content" id="final-exam-quiz">
+                ${renderFinalExamQuestion()}
+            </div>
+        </div>
+    `;
+        }
+
+        // Función para renderizar una pregunta del examen final
+        function renderFinalExamQuestion() {
+    const examQuestions = finalExams[currentGrade].questions;
+    const currentQ = examQuestions[finalExamState.currentQuestion];
+
+    return `
+    <div class="final-exam-quiz-content">
+        <div class="quiz-header">
+            <h3 class="quiz-title">Pregunta ${finalExamState.currentQuestion + 1} de ${finalExamState.totalQuestions}</h3>
+            <div class="quiz-score">
+                Correctas: <span id="final-exam-score">${finalExamState.correctAnswers}</span>/${finalExamState.totalQuestions}
+            </div>
+        </div>
+        
+        <div class="quiz-question">
+            <h4>${currentQ.question}</h4>
+            ${currentQ.image ? `
+                <img src="${currentQ.image}" alt="Imagen de la pregunta" class="quiz-image">
+            ` : ''}
+            <div class="quiz-options">
+                ${currentQ.options.map((option, index) => `
+                    <div class="quiz-option" 
+                         onclick="checkFinalExamAnswer(${index})" 
+                         data-option="${index}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+        
+        <div class="quiz-navigation">
+            <button class="quiz-nav-button" 
+                    onclick="previousFinalExamQuestion()" 
+                    ${finalExamState.currentQuestion === 0 ? 'disabled' : ''}>
+                Anterior
+            </button>
+            <div class="quiz-progress-counter">
+                ${finalExamState.currentQuestion + 1} de ${finalExamState.totalQuestions}
+            </div>
+            <button class="quiz-nav-button" 
+                    onclick="nextFinalExamQuestion()"
+                    ${finalExamState.currentQuestion === finalExamState.totalQuestions - 1 ? 'disabled' : ''}>
+                Siguiente
+            </button>
+        </div>
+
+        ${finalExamState.currentQuestion === finalExamState.totalQuestions - 1 ? `
+            <button class="finish-button" 
+                    onclick="finishFinalExam()" 
+                    style="display: ${finalExamState.answeredQuestions.size === finalExamState.totalQuestions ? 'block' : 'none'}">
+                Terminar Examen
+            </button>
+        ` : ''}
+    </div>
+    `;
+}
+// Función para verificar la respuesta del examen final
+function checkFinalExamAnswer(selectedOption) {
+    if (finalExamState.answeredQuestions.has(finalExamState.currentQuestion)) {
+        return; // Evita responder nuevamente si ya se contestó
+    }
+
+    const examQuestions = finalExams[currentGrade].questions;
+    const currentQ = examQuestions[finalExamState.currentQuestion];
+    const options = document.querySelectorAll('.quiz-option');
+    
+    // Marcar la pregunta como respondida
+    finalExamState.answeredQuestions.add(finalExamState.currentQuestion);
+    
+    if (selectedOption === currentQ.correct) {
+        options[selectedOption].classList.add('correct'); // Respuesta correcta en verde
+        finalExamState.correctAnswers++;
+        document.getElementById('final-exam-score').textContent = finalExamState.correctAnswers;
+    } else {
+        options[selectedOption].classList.add('incorrect'); // Respuesta incorrecta en rojo
+        options[currentQ.correct].classList.add('correct'); // Marca la respuesta correcta
+    }
+
+    // Deshabilitar todas las opciones
+    options.forEach(option => option.classList.add('disabled'));
+
+    // Verificar si es la última pregunta y todas han sido respondidas
+    if (finalExamState.currentQuestion === finalExamState.totalQuestions - 1) {
+        const finishButton = document.querySelector('.finish-button');
+        if (finishButton) {
+            finishButton.style.display = 'block';
+        }
+    }
+}
+
+
+// Funciones de navegación
+function nextFinalExamQuestion() {
+    if (finalExamState.currentQuestion < finalExamState.totalQuestions - 1) {
+        finalExamState.currentQuestion++;
+        document.getElementById('final-exam-quiz').innerHTML = renderFinalExamQuestion();
+    }
+}
+
+function previousFinalExamQuestion() {
+    if (finalExamState.currentQuestion > 0) {
+        finalExamState.currentQuestion--;
+        document.getElementById('final-exam-quiz').innerHTML = renderFinalExamQuestion();
+    }
+}
+
+// Función para terminar el examen final
+function finishFinalExam() {
+    const percentage = (finalExamState.correctAnswers / finalExamState.totalQuestions) * 100;
+    const contentDiv = document.getElementById("content");
+    
+    contentDiv.innerHTML = `
+        <div class="final-exam-results">
+            <h2>Resultados del Examen Final</h2>
+            <div class="quiz-score">
+                <h3>Calificación Final: ${percentage.toFixed(1)}%</h3>
+                <p>Respuestas correctas: ${finalExamState.correctAnswers} de ${finalExamState.totalQuestions}</p>
+            </div>
+            <div class="exam-feedback">
+                ${getFeedbackMessage(percentage)}
+            </div>
+            <button class="quiz-nav-button" onclick="showGrade('${currentGrade}')">
+                Volver al contenido del curso
+            </button>
+        </div>
+    `;
+}
+
+// Función para obtener mensaje de retroalimentación
+function getFeedbackMessage(percentage) {
+    if (percentage >= 90) {
+        return "¡Excelente trabajo! Has demostrado un dominio sobresaliente de los temas.";
+    } else if (percentage >= 80) {
+        return "¡Muy bien! Has mostrado un buen entendimiento de los conceptos.";
+    } else if (percentage >= 70) {
+        return "¡Bien! Has aprobado, pero hay espacio para mejorar.";
+    } else {
+        return "Te recomendamos repasar los temas nuevamente para fortalecer tu comprensión.";
+    }
+}
+
+// Modificar el evento onclick del botón de examen final
+document.getElementById('finalExamButton').onclick = startFinalExam;
+
+
+        function initQuizState(topicIndex) {
+            quizStates[topicIndex] = {
+                currentQuestion: 0,
+                totalQuestions: grades[currentGrade].topics[topicIndex].content.quiz.questions.length,
+                answeredQuestions: new Set(),
+                correctAnswers: 0
+            };
+            updateNavigationButtons(topicIndex);
+        }
+
+
+        // Modify the showGrade function to add current grade indication
+// Updated showGrade function
+
+function showGrade(gradeKey) {
+    currentGrade = gradeKey;
+    const grade = grades[gradeKey];
+    
+    // Initialize completedTopics for this grade if not exists
+    if (!completedTopics[gradeKey]) {
+        completedTopics[gradeKey] = new Set();
+    }
+
+    const contentDiv = document.getElementById("content");
+
+    contentDiv.innerHTML = `
+    <div class="mobile-content-wrapper">
+        <div class="welcome-mobile-section">
+            <h2>¡Bienvenido a Matemáticas!</h2>
+            <p>Estás en: ${grade.title}</p>
+            <p>Explora los temas y mejora tus habilidades matemáticas.</p>
+        </div>
+
+        <div class="topics-container">
+            <h3>Temas de ${grade.title}</h3>
+            <div class="topics">
+                ${grade.topics.map((topic, index) => `
+                    <div class="topic-wrapper">
+                        <button 
+                            onclick="selectTopic(${index})" 
+                            class="topic-button ${completedTopics[gradeKey].has(index) ? 'completed' : ''}" 
+                            id="topic-button-${index}">
+                            ${topic.title} ${completedTopics[gradeKey].has(index) ? '✔️' : ''}
+                        </button>
+                    </div>
+                `).join("")}
+            </div>
+            
+            <button 
+                id="finalExamButton" 
+                class="final-exam-button" 
+                style="display: none;"
+                onclick="startFinalExam()">
+                Realizar examen final
+            </button>
+        </div>
+    </div>
+    `;
+
+    // Mostrar botón del examen final si todos los temas están completos
+    checkAllTopicsCompleted();
+
+    // Highlight selected grade in sidebar
+    const buttons = document.querySelectorAll('.sidebar button');
+    buttons.forEach(btn => {
+        btn.classList.remove('active-grade');
+        if (btn.getAttribute('onclick') === `showGrade('${gradeKey}')`) {
+            btn.classList.add('active-grade');
+        }
+    });
+
+    // Check for topic completion and final exam
+    if (grade.topics && grade.topics.length > 0) {
+        grade.topics.forEach((_, index) => {
+            if (quizStates[index] && quizStates[index].answeredQuestions && 
+                quizStates[index].answeredQuestions.size === quizStates[index].totalQuestions) {
+                completedTopics.add(index);
+            }
+        });
+    }
+
+    // Show final exam button if all topics completed
+    if (completedTopics.size === grade.topics.length) {
+        const finalExamButton = document.getElementById('finalExamButton');
+        if (finalExamButton) {
+            finalExamButton.style.display = 'block';
+        }
+    }
+}
+
+// New function to handle topic selection
+function selectTopic(index) {
+    const grade = grades[currentGrade];
+    const topic = grade.topics[index];
+    const contentDiv = document.getElementById("content");
+
+    // Highlight selected topic button
+    const topicButtons = document.querySelectorAll('.topic-button');
+    topicButtons.forEach(btn => btn.classList.remove('active-topic'));
+    document.getElementById(`topic-button-${index}`).classList.add('active-topic');
+
+    // Render topic content
+    contentDiv.innerHTML = `
+    <div class="mobile-content-wrapper">
+        <div class="current-location">
+            <p>Estás en: ${grade.title} > ${topic.title}</p>
+        </div>
+
+        <div class="topic-content-full">
+            <h3>${topic.content.title}</h3>
+            <p>${topic.content.description}</p>
+
+            <div class="videos">
+                ${topic.content.videos.map(video => `
+                    <div class="video-container">
+                        <h4>${video.title}</h4>
+                        <iframe width="560" height="315" src="${video.url}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                `).join("")}
+            </div>
+
+            ${renderQuiz(topic.content.quiz, index)}
+        </div>
+
+        <button onclick="showGrade('${currentGrade}')" class="back-to-topics-button">
+            Volver a temas
+        </button>
+    </div>
+    `;
+
+    // Initialize quiz state
+    if (topic.content.quiz) {
+        initQuizState(index);
+    }
+}
+
+    function renderTopicContent(topic, index) {
+  return `
+    <h3>${topic.content.title}</h3>
+    <p>${topic.content.description}</p>
+    <div class="videos">
+      ${topic.content.videos.map(video => `
+        <div class="video-container">
+          <h4>${video.title}</h4>
+          <iframe width="560" height="315" src="${video.url}" frameborder="0" allowfullscreen></iframe>
+        </div>
+      `).join("")}
+    </div>
+    ${renderQuiz(topic.content.quiz, index)}
+  `;
+}
+
+
+
+    function renderQuiz(quiz, topicIndex) {
+      if (!quiz) return '';
+      
+      return `
+        <div class="quiz-content" id="quiz-${topicIndex}">
+          <div class="quiz-header">
+            <h3 class="quiz-title">Práctica del tema</h3>
+            <div class="quiz-score">
+              Correctas: <span id="correct-count-${topicIndex}">0</span>/${quiz.questions.length}
+            </div>
+          </div>
+          
+          ${quiz.questions.map((question, index) => `
+            <div class="question-container ${index === 0 ? 'active' : ''}" 
+                 id="question-${topicIndex}-${index}">
+              <div class="quiz-question">
+                <h4>${question.question}</h4>
+                ${question.image ? `
+                  <img src="${question.image}" alt="Imagen de la pregunta" class="quiz-image">
+                ` : ''}
+                <div class="quiz-options">
+                  ${question.options.map((option, optIndex) => `
+                    <div class="quiz-option" 
+                         onclick="checkAnswer(${topicIndex}, ${index}, ${optIndex})" 
+                         data-option="${optIndex}">
+                      ${option}
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+          `).join('')}
+          
+          <div class="quiz-navigation">
+            <button class="quiz-nav-button" 
+                    onclick="previousQuestion(${topicIndex})" 
+                    id="prev-button-${topicIndex}" 
+                    disabled>
+              Anterior pregunta
+            </button>
+            <div class="quiz-progress-counter">
+              Pregunta <span id="current-question-${topicIndex}">1</span>/${quiz.questions.length}
+            </div>
+            <button class="quiz-nav-button" 
+                    onclick="nextQuestion(${topicIndex})" 
+                    id="next-button-${topicIndex}" 
+                    disabled>
+              Siguiente pregunta
+            </button>
+          </div>
+          <button class="finish-button" 
+                  onclick="finishQuiz(${topicIndex})" 
+                  id="finish-button-${topicIndex}" 
+                  style="display: none;">
+            Finalizar cuestionario
+          </button>
+        </div>
+      `;
+    }
+
+// Guardar el progreso en localStorage
+function saveProgress(gradeKey, topicIndex = null) {
+    const progress = {
+        grade: gradeKey,
+        topic: topicIndex,
+        // Convert Set to array for JSON serialization
+        completedTopics: Object.fromEntries(
+            Object.entries(completedTopics).map(([key, value]) => [key, Array.from(value)])
+        )
+    };
+    localStorage.setItem('userProgress', JSON.stringify(progress));
+}
+
+// Recuperar el progreso desde localStorage
+function loadProgress() {
+    const progress = JSON.parse(localStorage.getItem('userProgress'));
+    if (progress) {
+        currentGrade = progress.grade;
+        
+        // Restore completedTopics from saved progress
+        if (progress.completedTopics) {
+            Object.entries(progress.completedTopics).forEach(([grade, topics]) => {
+                completedTopics[grade] = new Set(topics);
+            });
+        }
+        
+        showGrade(currentGrade);
+
+        if (progress.topic !== null) {
+            selectTopic(progress.topic);
+        }
+    }
+}
+
+
+
+    function checkAnswer(topicIndex, questionIndex, selectedOption) {
+      if (quizStates[topicIndex].answeredQuestions.has(questionIndex)) {
+        return; // Pregunta ya respondida
+      }
+
+      const questionElement = document.querySelector(`#question-${topicIndex}-${questionIndex}`);
+      const options = questionElement.querySelectorAll('.quiz-option');
+      const correctAnswer = grades[currentGrade].topics[topicIndex].content.quiz.questions[questionIndex].correct;
+
+      const selectedElement = options[selectedOption];
+      
+      // Marcar como respondida
+      quizStates[topicIndex].answeredQuestions.add(questionIndex);
+
+      // Actualizar UI
+      if (selectedOption === correctAnswer) {
+        selectedElement.classList.add('correct');
+        quizStates[topicIndex].correctAnswers++;
+        updateScore(topicIndex);
+      } else {
+        selectedElement.classList.add('incorrect');
+        options[correctAnswer].classList.add('correct');
+      }
+
+      // Deshabilitar todas las opciones
+      options.forEach(option => {
+        option.classList.add('disabled');
+      });
+
+      // Habilitar botón siguiente si hay más preguntas
+      const nextButton = document.getElementById(`next-button-${topicIndex}`);
+      if (questionIndex < quizStates[topicIndex].totalQuestions - 1) {
+        nextButton.disabled = false;
+      } else {
+        document.getElementById(`finish-button-${topicIndex}`).style.display = 'block';
+      }
+    }
+
+    // funcion para actualizar la barra de progreso //
+    function updateProgressBar() {
+    // Ensure we're using the current grade's completed topics
+    const totalTopics = grades[currentGrade].topics.length;
+    const completedCount = completedTopics[currentGrade] ? completedTopics[currentGrade].size : 0;
+    const progressPercentage = (completedCount / totalTopics) * 100;
+
+    const progressBar = document.getElementById('progress-bar');
+    if (progressBar) {
+        progressBar.style.width = `${progressPercentage}%`;
+    }
+}
+
+
+
+    function updateScore(topicIndex) {
+      const scoreElement = document.getElementById(`correct-count-${topicIndex}`);
+      scoreElement.textContent = quizStates[topicIndex].correctAnswers;
+    }
+
+    function nextQuestion(topicIndex) {
+      if (quizStates[topicIndex].currentQuestion < quizStates[topicIndex].totalQuestions - 1) {
+        const currentQuestionElement = document.querySelector(`#question-${topicIndex}-${quizStates[topicIndex].currentQuestion}`);
+        currentQuestionElement.classList.remove('active');
+        
+        quizStates[topicIndex].currentQuestion++;
+        
+        const nextQuestionElement = document.querySelector(`#question-${topicIndex}-${quizStates[topicIndex].currentQuestion}`);
+        nextQuestionElement.classList.add('active');
+        
+        updateNavigationButtons(topicIndex);
+        updateQuestionCounter(topicIndex);
+      }
+    }
+
+    function previousQuestion(topicIndex) {
+      if (quizStates[topicIndex].currentQuestion > 0) {
+        const currentQuestionElement = document.querySelector(`#question-${topicIndex}-${quizStates[topicIndex].currentQuestion}`);
+        currentQuestionElement.classList.remove('active');
+        
+        quizStates[topicIndex].currentQuestion--;
+        
+        const prevQuestionElement = document.querySelector(`#question-${topicIndex}-${quizStates[topicIndex].currentQuestion}`);
+        prevQuestionElement.classList.add('active');
+        
+        updateNavigationButtons(topicIndex);
+        updateQuestionCounter(topicIndex);
+      }
+    }
+
+    function updateNavigationButtons(topicIndex) {
+      const prevButton = document.getElementById(`prev-button-${topicIndex}`);
+      const nextButton = document.getElementById(`next-button-${topicIndex}`);
+      const state = quizStates[topicIndex];
+
+      prevButton.disabled = state.currentQuestion === 0;
+      nextButton.disabled = !state.answeredQuestions.has(state.currentQuestion) || 
+                           state.currentQuestion === state.totalQuestions - 1;
+    }
+
+    function updateQuestionCounter(topicIndex) {
+      const counterElement = document.getElementById(`current-question-${topicIndex}`);
+      counterElement.textContent = quizStates[topicIndex].currentQuestion + 1;
+    }
+
+    function finishQuiz(topicIndex) {
+    completedTopics[currentGrade].add(topicIndex); // Marcar tema como completado
+
+     // Actualizar visualmente el tema
+     const topicButton = document.getElementById(`topic-button-${topicIndex}`);
+    if (topicButton) {
+        topicButton.classList.add('completed');
+        topicButton.innerHTML = `${grades[currentGrade].topics[topicIndex].title} ✔️`;
+    }
+
+    
+    // Ocultar el cuestionario actual
+    const quizContent = document.getElementById(`quiz-${topicIndex}`);
+    quizContent.innerHTML = `
+        <div class="quiz-header">
+          <h3 class="quiz-title">Cuestionario completado</h3>
+          <div class="quiz-score">
+            Puntaje final: ${quizStates[topicIndex].correctAnswers}/${quizStates[topicIndex].totalQuestions}
+          </div>
+        </div>
+    `;
+
+    checkAllTopicsCompleted(); // Verificar si se completaron todos los temas
+}
+
+
+function checkAllTopicsCompleted() {
+    updateProgressBar();
+    const totalTopics = grades[currentGrade].topics.length;
+    const gradeTopic = completedTopics[currentGrade];
+
+    if (gradeTopic && gradeTopic.size === totalTopics) {
+        const finalExamButton = document.getElementById('finalExamButton');
+        if (finalExamButton) {
+            finalExamButton.style.display = 'block';
+        }
+    }
+}
+
+
+    function toggleTopic(index) {
+      saveProgress(currentGrade, index); // Guardar el grado y el tema actuales
+      currentTopic = index;
+      const topicContent = document.getElementById(`topic-${index}`);
+      const allTopics = document.querySelectorAll('.topic-content');
+      
+      allTopics.forEach(topic => {
+        if (topic !== topicContent) {
+          topic.classList.remove('active');
+        }
+      });
+      
+      topicContent.classList.toggle('active');
+      
+      // Inicializar estado del cuestionario cuando se abre el tema
+      if (topicContent.classList.contains('active') && 
+          grades[currentGrade].topics[index].content.quiz) {
+        initQuizState(index);
+      }
+    }
+
+    // Llamar a la función de carga al iniciar la página
+document.addEventListener('DOMContentLoaded', () => {
+    loadProgress();
+});
+    </script>
+</body>
+<footer>
+    <p>&copy; 2025 José Santisteban | Aprende Con JS. Todos los derechos reservados.</p>
+</footer>
+
+</html>
